@@ -1,0 +1,177 @@
+:root{
+    --primary-color:#FF7A01;
+    --secondary-color:#1c3fa8;
+    --dark-color:#000;
+    --light-color:#f4f4f4;
+}
+
+/* Basic styling */
+
+/* Universal selector*/
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-family: 'Lato', 'sans-serif';
+    color: #333;
+    line-height: 1.6;
+}
+
+ul{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+    color: #333;
+}
+
+/* Navigation */
+
+.navbar{
+    background-color: var(--dark-color);
+    color: #fff;
+}
+
+.navbar .container{
+    height: 60px;
+}
+
+.navbar img{
+    height: 50%;
+}
+
+.navbar nav ul{
+    display: flex;
+}
+
+.navbar nav a{
+    color: #fff;
+    margin: 0 20px;
+    font-size: 1rem;
+}
+
+.navbar nav a:hover{
+    color: var(--primary-color);
+}
+
+.toggle{
+    visibility: hidden;
+    position: fixed; /* stays in the same place no matter what*/
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    background: var(--dark-color) url(../img/menu.png);
+    background-size: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 20;
+    cursor: pointer;
+  }
+  
+  .toggle.active{
+    background: var(--primary-color) url(../img/close.png);
+    background-size: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* Showcase */
+  .showcase{
+    background-color: var(--dark-color);
+    color: #f4f4f4;
+    height: 400px;
+  }
+
+  .showcase h1{
+    font-size: 40px;
+  }
+
+  .showcase h2{
+    font-size: 20px;
+    padding: 20px 0;
+  }
+
+  .showcase .btn{
+    margin: 20px 0;
+  }
+
+  .showcase img{
+    height: 50%;
+  }
+
+
+  /* Intro */
+  .intro{
+    max-width: 100%;
+    background-image: url(../img/robot2.png);
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .intro.grid{
+    grid-template-columns: 45% 55%;
+  }
+
+  .intro li{
+    margin: 20px 0;
+  }
+
+  .intro img{
+    width: 100%;
+  }
+
+  @media(max-width: 950px){
+    /* Navbar */
+    .links{
+        display: none;
+    }
+
+    .toggle{
+        visibility: visible;
+    }
+
+
+    /* Showcase */
+    .showcase{
+        height: 500px;
+    }
+
+    .showcase .grid{
+        grid-template-columns: 1fr;
+    }
+
+    .showcase img{
+        grid-row-start: 1;
+        height: 100%;
+        justify-self: center;
+    }
+
+    .showcase-text{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+  }
+
+  @media(max-width: 500px){
+
+
+    .showcase h1{
+        font-size: 26px;
+    }
+
+    .showcase h2{
+        font-size: 1rem;
+    }
+
+    .showcase .btn{
+        font-size: 0.9rem;
+    }
+  }
