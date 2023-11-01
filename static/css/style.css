@@ -92,16 +92,19 @@ a{
     height: 100vh;
     color: #f4f4f4;
     background-size: cover;
-    background-position: center;
-    height: 400px;
+    height:100vh;
+  }
+
+  .showcase .main{
+    height: 800px;
   }
 
   .showcase h1{
-    font-size: 40px;
+    font-size: 50px;
   }
 
   .showcase h2{
-    font-size: 20px;
+    font-size: 30px;
     padding: 20px 0;
   }
 
@@ -110,30 +113,19 @@ a{
   }
 
   .showcase img{
-    height: 60%;
+    height: 40%;
   }
 
-/* Intro*/
+  .showcase p{
+    max-width: 600px;
+    margin: 10px 0px;
+    font-size: 1.2rem;
+  }
 
-.intro .grid{
-    grid-template-columns: 30% 60%;
-}
-
-.intro h2{
-    margin: 40px 0;
-    grid-column: span 2;
-}
-
-.intro .card{
-    max-width: 800px;
-    font-size: 1.1rem;
-    background-color: var(--light-color);
-    color: var(--dark-color);
-}
 
 /* Offering */
 .offering{
-    margin-top: 50px;
+    padding-top: 50px;
     padding-bottom: 30px;
     max-width: 100%;
     background-image: linear-gradient(
@@ -151,10 +143,13 @@ a{
     text-align: center;
     margin: 20px 0px;
     color: var(--light-color);
-    font-size: 2rem;
+    font-size: 30px;
+   
 }
 
 .offering .grid{
+    height: 100%;
+
     grid-template-columns: repeat(2, 1fr);
 }
 
@@ -164,15 +159,21 @@ a{
 }
 
 .offering .card{
-    background-color: #fff;
+    background-color: transparent;
 }
 
 .offering .card h3{
-    color: var(--dark-color);
+    color: var(--light-color);
+    font-weight: 900;
+    border-bottom: 1px solid var(--primary-color);
+    width: fit-content;
+    font-size: 20px;
+    margin-bottom: 5px;
 }
 
 .offering .card p{
-    color: var(--d-color);
+    color: var(--light-color);
+    font-size: 1.1rem;
 }
 
 /* footer */
@@ -216,11 +217,26 @@ footer a{
 
     /* Showcase */
     .showcase{
-        height: 500px;
+        height: 100%;
+        text-align: center;
     }
 
     .showcase .grid{
+        height: 100%;
+
         grid-template-columns: 1fr;
+    }
+
+    .showcase h1{
+        font-size: 30px;
+    }
+
+    .showcase h2{
+        font-size: 20px;
+    }
+
+    .showcase p{
+        font-size: 1rem;
     }
 
     .showcase img{
@@ -236,23 +252,12 @@ footer a{
         align-items: center;
     }
 
-    /* Intro */
-
-    .intro{
-        text-align: center;
-    }
-
-    .intro h2{
-        font-size: 1.2rem;
-        margin: 20px 0;
-        grid-column: span 1;
-    }
-
-    .intro .grid{
-        grid-template-columns: 1fr;
-    }
 
     /* Offering */
+    .offering{
+        height: 100%;
+    }
+
     .offering .grid{
         grid-template-columns: 1fr;
     }
@@ -263,6 +268,10 @@ footer a{
     }
 
     .offering .card{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         text-align: center;
     }
 
