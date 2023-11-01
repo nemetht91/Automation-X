@@ -65,7 +65,7 @@ a{
     right: 0;
     width: 60px;
     height: 60px;
-    background: var(--dark-color) url(../img/menu.png);
+    background: var(--dark-color) url("https://github.com/nemetht91/Automation-X/blob/main/static/img/menu.png?raw=true");
     background-size: 30px;
     background-position: center;
     background-repeat: no-repeat;
@@ -74,7 +74,7 @@ a{
   }
   
   .toggle.active{
-    background: var(--primary-color) url(../img/close.png);
+    background: var(--primary-color) url("https://github.com/nemetht91/Automation-X/blob/main/static/img/close.png?raw=true");
     background-size: 25px;
     background-position: center;
     background-repeat: no-repeat;
