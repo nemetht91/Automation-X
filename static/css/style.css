@@ -87,7 +87,7 @@ a{
     to bottom,
     rgba(0, 0, 0, 1),
     rgba(0, 0, 255, 0.5)
-  ), url(../img/robot2.png);
+  ), url("https://github.com/nemetht91/Automation-X/blob/main/static/img/robot2.png?raw=true");
     background-color: var(--dark-color);
     height: 100vh;
     color: #f4f4f4;
@@ -140,7 +140,7 @@ a{
     to bottom,
     rgba(0, 0, 255, 0.5),
     rgba(0, 0, 0, 1)
-  ), url(https://github.com/nemetht91/Automation-X/blob/main/static/img/robot1.jpg);
+  ), url("https://github.com/nemetht91/Automation-X/blob/main/static/img/robot1.jpg?raw=true");
     background-color: var(--dark-color);
     color: #f4f4f4;
     background-size: cover;
