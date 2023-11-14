@@ -3,6 +3,7 @@
     --secondary-color:#1c3fa8;
     --dark-color:#000;
     --light-color:#f4f4f4e3;
+    --showcase-background: url("https://github.com/nemetht91/Automation-X/blob/main/static/img/robot2.png?raw=true");
 }
 
 /* Basic styling */
@@ -29,11 +30,21 @@ a{
     color: #333;
 }
 
+a:hover{
+    color: var(--primary-color);
+}
+
+.hidden{
+    display: none;
+}
+
 /* Navigation */
 
 .navbar{
-    background-color: var(--dark-color);
-    color: #fff;
+    background-color: #fff;
+    border-bottom: lightgray solid 1px;
+    position: fixed;
+    width: 100%;
 }
 
 .navbar .container{
@@ -41,7 +52,7 @@ a{
 }
 
 .navbar img{
-    height: 50%;
+    height: 40%;
 }
 
 .navbar nav ul{
@@ -49,7 +60,7 @@ a{
 }
 
 .navbar nav a{
-    color: #fff;
+    color: gray;
     margin: 0 20px;
     font-size: 1.1rem;
 }
@@ -83,20 +94,26 @@ a{
   /* Showcase */
   .showcase{
     max-width: 100%;
-    background-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 1),
-    rgba(0, 0, 255, 0.5)
-  ), url("https://github.com/nemetht91/Automation-X/blob/main/static/img/robot2.png?raw=true");
-    background-color: var(--dark-color);
-    height: 100vh;
-    color: #f4f4f4;
-    background-size: cover;
-    height:100vh;
-  }
+    padding-top: 60PX;
+    background-color: var(--light-color);
+}
+
 
   .showcase .main{
-    height: 800px;
+        background-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 255, 0.055)
+      ), var(--showcase-background);
+        background-color: var(--dark-color);
+        height: 100vh;
+        color: #f4f4f4;
+        background-size: cover;
+        height: 600px;
+  }
+
+  .showcase .main img{
+    object-fit: cover;
   }
 
   .showcase h1{
@@ -113,7 +130,7 @@ a{
   }
 
   .showcase img{
-    height: 40%;
+    height: 300px;
   }
 
   .showcase p{
@@ -123,26 +140,22 @@ a{
   }
 
 
+
 /* Offering */
 .offering{
-    padding-top: 50px;
+    padding-top: 20px;
     padding-bottom: 30px;
     max-width: 100%;
-    background-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 255, 0.5),
-    rgba(0, 0, 0, 1)
-  ), url("https://github.com/nemetht91/Automation-X/blob/main/static/img/robot1.jpg?raw=true");
-    background-color: var(--dark-color);
-    color: #f4f4f4;
-    background-size: cover;
-    background-position: center;;
+    background-color: var(--light-color);
+    color: gray;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .offering h2{
     text-align: center;
     margin: 20px 0px;
-    color: var(--light-color);
+    color: black;
     font-size: 30px;
    
 }
@@ -163,7 +176,7 @@ a{
 }
 
 .offering .card h3{
-    color: var(--light-color);
+    color: black;
     font-weight: 900;
     border-bottom: 1px solid var(--primary-color);
     width: fit-content;
@@ -172,16 +185,21 @@ a{
 }
 
 .offering .card p{
-    color: var(--light-color);
+    color: black;
     font-size: 1.1rem;
 }
 
 /* footer */
 
 footer{
-    background-color: var(--dark-color);
-    color: var(--light-color);
+    border-top: lightgray solid 1px;
+    background-color: var(--ligth-color);
+    color: gray;
     height: 150px;
+}
+footer img{
+    height: 80px;
+    margin-right: 40px;
 }
 
 footer .flex{
@@ -200,7 +218,7 @@ footer li{
 }
 
 footer a{
-    color: var(--light-color);
+    color: gray;
 }
 
   @media(max-width: 950px){
