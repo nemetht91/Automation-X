@@ -69,6 +69,8 @@ a:hover{
     color: var(--primary-color);
 }
 
+/* Mobile navigation */
+
 .toggle{
     visibility: hidden;
     position: fixed; /* stays in the same place no matter what*/
@@ -76,7 +78,7 @@ a:hover{
     right: 0;
     width: 60px;
     height: 60px;
-    background: var(--dark-color) url("https://github.com/nemetht91/Automation-X/blob/main/static/img/menu.png?raw=true");
+    background: var(--primary-color) url("https://github.com/nemetht91/Automation-X/blob/main/static/img/menu.png?raw=true");
     background-size: 30px;
     background-position: center;
     background-repeat: no-repeat;
@@ -89,6 +91,62 @@ a:hover{
     background-size: 25px;
     background-position: center;
     background-repeat: no-repeat;
+  }
+
+  /* Navigation*/
+.navbar .mobile{
+    position: fixed;
+    top: 0;
+    left: 100%; /* Pushing off screen*/
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .navbar .mobile.active{
+    left: 0; /* Bringing it back screen*/
+  }
+  
+  .navbar .mobile ul{
+    position: relative;
+  }
+  
+  .navbar .mobile ul li{
+    position: relative;
+    list-style: none;
+    text-align: center;
+  }
+  
+  .navbar .mobile ul li a{
+    font-size: 2.2rem;
+    color: #111;
+    text-decoration: none;
+    font-weight: 300;
+  }
+  
+  .navbar .mobile ul li a:hover{
+    color: var(--primary-color);
+  }
+  
+  .navbar .mobile .social-bar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .navbar .mobile .social-bar a{
+    display: inline-block;
+    transform: scale(0.5); /* Making it smaller */
+  
   }
 
   /* Showcase */
@@ -317,6 +375,7 @@ footer a{
     margin-left: 22px;
     color: #111;
   }
+
 
   @media(max-width: 950px){
 

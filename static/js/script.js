@@ -16,3 +16,19 @@ function changeShowcaseImage(){
     var r = document.querySelector(':root');
     r.style.setProperty('--showcase-background', newImage)
 }
+
+const toggle = document.querySelector('.toggle');
+const navigation = document.querySelector('.navbar .mobile')
+
+
+toggle.addEventListener("click", () => {
+    toggle.classList.toggle("active")
+    navigation.classList.toggle("active")
+});
+
+window.addEventListener("resize", () => {
+    if(window.innerWidth > 950 ){
+        toggle.classList.remove("active")
+        navigation.classList.remove("active")
+    }
+});
