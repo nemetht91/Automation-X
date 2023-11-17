@@ -168,6 +168,7 @@ a:hover{
         height: 100vh;
         color: #f4f4f4;
         background-size: cover;
+        background-position: center;
         height: 500px;
   }
 
@@ -493,6 +494,7 @@ footer a{
   @media(max-width: 700px){
 
 
+
     .showcase h1{
         font-size: 26px;
     }
@@ -537,5 +539,15 @@ footer a{
         grid-column: span 1;
       }
 
-      
+      .flip-card{
+        padding: 0;
+      }
+
+      .flip-card-front h3{
+        font-size: 1.1rem;
+      }
+
+      .flip-card-back{
+        font-size: 0.8rem;
+      }
   }
