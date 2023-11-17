@@ -45,6 +45,7 @@ a:hover{
     border-bottom: lightgray solid 1px;
     position: fixed;
     width: 100%;
+    z-index: 10;
 }
 
 .navbar .container{
@@ -154,20 +155,20 @@ a:hover{
     max-width: 100%;
     padding-top: 60PX;
     background-color: var(--light-color);
+   
 }
 
 
   .showcase .main{
-        background-image: linear-gradient(
+    background-image: linear-gradient(
         to bottom,
         rgba(0, 0, 0, 1),
         rgba(0, 0, 255, 0.055)
       ), var(--showcase-background);
-        background-color: var(--dark-color);
         height: 100vh;
         color: #f4f4f4;
         background-size: cover;
-        height: 600px;
+        height: 500px;
   }
 
   .showcase .main img{
@@ -175,7 +176,7 @@ a:hover{
   }
 
   .showcase h1{
-    font-size: 50px;
+    font-size: 55px;
   }
 
   .showcase h2{
@@ -197,8 +198,6 @@ a:hover{
     font-size: 1.2rem;
   }
 
-
-
 /* Offering */
 .offering{
     padding-top: 20px;
@@ -206,34 +205,61 @@ a:hover{
     max-width: 100%;
     background-color: var(--light-color);
     color: gray;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.offering h2{
-    text-align: center;
-    margin: 20px 0px;
-    color: black;
-    font-size: 30px;
-   
 }
 
 .offering .grid{
     height: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
 
+
+.offering img{
+  width: 100%; height: 200px; object-fit: cover;
+}
+
+.offering .service h3{
+    font-size: 1.5rem;
+    padding: 10px 0px;
+}
+
+.offering .service p{
+    padding: 10px 0;
+}
+
+
+
+/* promotition */
+.promotition{
+    padding-top: 20px;
+    padding-bottom: 30px;
+    max-width: 100%;
+    background-color: var(--light-color);
+    color: gray;
+}
+
+.promotition h2{
+    margin: 20px 0px;
+    font-size: 30px;
+    border-bottom: var(--primary-color) solid 3px;
+    width: fit-content;
+}
+
+.promotition .grid{
+    height: 100%;
     grid-template-columns: repeat(2, 1fr);
 }
 
-.offering .grid :first-child,
-.offering .grid :nth-child(6){
+.promotition .grid :first-child,
+.promotition .grid :nth-child(6){
     grid-column: span 2;
 }
 
-.offering .card{
+.promotition .card{
     background-color: transparent;
 }
 
-.offering .card h3{
+.promotition .card h3{
     color: black;
     font-weight: 900;
     border-bottom: 1px solid var(--primary-color);
@@ -242,7 +268,7 @@ a:hover{
     margin-bottom: 5px;
 }
 
-.offering .card p{
+.promotition .card p{
     color: black;
     font-size: 1.1rem;
 }
@@ -379,6 +405,7 @@ footer a{
 
   @media(max-width: 950px){
 
+
     /* Navbar */
     .links{
         display: none;
@@ -391,8 +418,7 @@ footer a{
 
     /* Showcase */
     .showcase{
-        height: 100%;
-        text-align: center;
+        height: 400px;
     }
 
     .showcase .grid{
@@ -422,25 +448,26 @@ footer a{
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: start;
     }
 
 
-    /* Offering */
-    .offering{
+    /* promotition */
+    .promotition{
         height: 100%;
     }
 
-    .offering .grid{
+    .offering .grid,
+    .promotition .grid{
         grid-template-columns: 1fr;
     }
 
-    .offering .grid :first-child,
-    .offering .grid :nth-child(6){
+    .promotition .grid :first-child,
+    .promotition .grid :nth-child(6){
     grid-column: span 1;
     }
 
-    .offering .card{
+    .promotition .card{
         display: flex;
         flex-direction: column;
         justify-content: center;
