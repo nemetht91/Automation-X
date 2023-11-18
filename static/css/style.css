@@ -231,6 +231,15 @@ a:hover{
     padding: 10px 0;
 }
 
+.offering .service .service-img{
+    line-height: 50%;
+}
+
+.offering .service .image_src{
+    color: var(--text-color);
+    font-size: 0.6rem;
+}
+
 
 
 /* promotition */
