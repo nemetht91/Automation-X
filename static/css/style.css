@@ -3,6 +3,7 @@
     --secondary-color:#1c3fa8;
     --dark-color:#000;
     --light-color:#f4f4f4e3;
+    --text-color: gray;
     --showcase-background: url("https://github.com/nemetht91/Automation-X/blob/main/static/img/robot2.png?raw=true");
 }
 
@@ -54,6 +55,7 @@ a:hover{
 
 .navbar img{
     height: 40%;
+    z-index: 20;
 }
 
 .navbar nav ul{
@@ -61,7 +63,7 @@ a:hover{
 }
 
 .navbar nav a{
-    color: gray;
+    color: var(--text-color);
     margin: 0 20px;
     font-size: 1.1rem;
 }
@@ -106,6 +108,7 @@ a:hover{
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--text-color);
   }
   
   .navbar .mobile.active{
@@ -124,7 +127,7 @@ a:hover{
   
   .navbar .mobile ul li a{
     font-size: 2.2rem;
-    color: #111;
+    color: var(--text-color);
     text-decoration: none;
     font-weight: 300;
   }
@@ -205,7 +208,7 @@ a:hover{
     padding-bottom: 30px;
     max-width: 100%;
     background-color: var(--light-color);
-    color: gray;
+    color: var(--text-color);
 }
 
 .offering .grid{
@@ -236,7 +239,7 @@ a:hover{
     padding-bottom: 30px;
     max-width: 100%;
     background-color: var(--light-color);
-    color: gray;
+    color: var(--text-color);
 }
 
 .promotition h2{
@@ -279,7 +282,7 @@ a:hover{
 footer{
     border-top: lightgray solid 1px;
     background-color: var(--ligth-color);
-    color: gray;
+    color: var(--text-color);
     height: 150px;
 }
 footer img{
@@ -303,7 +306,7 @@ footer li{
 }
 
 footer a{
-    color: gray;
+    color: var(--text-color);
 }
 
 /* Contact */
@@ -312,6 +315,7 @@ footer a{
     max-width: 100%;
     padding-top: 60PX;
     background-color: var(--light-color);
+    color: var(--text-color);
 }
 
 .contact .main .container{
@@ -350,7 +354,7 @@ footer a{
 .contact .form input[type="text"],
 .contact .form input[type="email"]
 {
-    border: 1px solid #b4becb;
+    border: 1px solid var(--text-color);
     padding: 3px;
     font-size: 16px;
     text-indent: 5px;
@@ -369,6 +373,7 @@ footer a{
     border: none;
     color: #fff;
     width: 100%;
+    font-size: 1.1rem;
   }
 
   .contact .details{
@@ -387,7 +392,7 @@ footer a{
   
   .contact .details .mode h3{
     color: var(--secondary-color);
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     display: inline-block;
   }
   
@@ -400,7 +405,11 @@ footer a{
     display: block;
     font-size: 0.9rem;
     margin-left: 22px;
-    color: #111;
+    color: var(--text-color);
+  }
+
+  .contact .details a:hover{
+    color: var(--primary-color);
   }
 
 
