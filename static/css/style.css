@@ -421,6 +421,57 @@ footer a{
     color: var(--primary-color);
   }
 
+  /* Products and Services */
+  .services-intro{
+    max-width: 100%;
+    padding-top: 60PX;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    height: 400px;
+    position: relative;
+
+  }
+
+  .services-intro::before,
+  .services-intro::after{
+    content: ""; /* Required if you use before or after, you could put some text in it*/
+    position: absolute;
+    height: 100px;
+    bottom: -70px; /* Negative because we want to move down from the bottom*/
+    right: 0;
+    left: 0;
+    background: white;
+    transform: skewY(-3deg); /* Makes the slide*/
+    /* Making sure it works in other browsers*/
+    -webkit-transform: skewY(-3deg); 
+    -moz-transform: skewY(-3deg); 
+    -ms-transform: skewY(-3deg); 
+}
+
+
+  .services-intro .intro-text{
+    color: white;
+  }
+
+  .services-intro .intro-text h1{
+    font-size: 50px;
+  }
+
+  .services-intro .intro-text p{
+    font-size: 1.5rem;
+  }
+
+  .services-intro .service-img{
+    position: relative;
+    top: 30px;
+    z-index: 10;
+
+  }
+
+  .services-intro .service-img img{
+    height: 300px;
+  }
+
 
   @media(max-width: 950px){
 
