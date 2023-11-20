@@ -53,6 +53,8 @@ for (var i = 0; i < portfolio_menu.length; i++){
 function showPortfolioContent(contentName){
     content = document.querySelector(".services-portfolio ."+contentName);
     content.classList.remove("hidden");
+    nav_button = document.querySelector(".services-navigation #"+contentName);
+    nav_button.classList.add("selected");
 }
 
 function removeAllMenuSelection(){
@@ -67,3 +69,26 @@ function hideAllPortfolioContent(){
     }
 }
 
+
+/* Starting Portolio selection */
+const portfolioSelectors = document.querySelectorAll(".offering .container .btn")
+
+
+for (var i = 0; i < portfolioSelectors.length; i++){
+    portfolioSelectors[i].addEventListener("click", event => {
+        var portfolioSelector = event.currentTarget.getAttribute("id");
+        localStorage.setItem("portfolioSelector", portfolioSelector)
+    });
+}
+
+window.addEventListener("load", event =>{
+    if(window.location.href.match('services.html') != null){
+        var portfolioSelector = localStorage.getItem("portfolioSelector");
+        if (portfolioSelector != null){
+            removeAllMenuSelection();
+            hideAllPortfolioContent();
+            showPortfolioContent(portfolioSelector);
+        }
+        
+    }
+});    
