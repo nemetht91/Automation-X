@@ -45,7 +45,8 @@ for (var i = 0; i < portfolio_menu.length; i++){
     portfolio_menu[i].addEventListener("click", event => {
         removeAllMenuSelection();
         hideAllPortfolioContent();
-        event.currentTarget.classList.add("selected");
+        var portfolioSelector = event.currentTarget.getAttribute("id");
+        localStorage.setItem("portfolioSelector", portfolioSelector);
         showPortfolioContent(event.currentTarget.getAttribute("id"));
     })
 }
@@ -77,7 +78,7 @@ const portfolioSelectors = document.querySelectorAll(".offering .container .btn"
 for (var i = 0; i < portfolioSelectors.length; i++){
     portfolioSelectors[i].addEventListener("click", event => {
         var portfolioSelector = event.currentTarget.getAttribute("id");
-        localStorage.setItem("portfolioSelector", portfolioSelector)
+        localStorage.setItem("portfolioSelector", portfolioSelector);
     });
 }
 
@@ -88,6 +89,11 @@ window.addEventListener("load", event =>{
             removeAllMenuSelection();
             hideAllPortfolioContent();
             showPortfolioContent(portfolioSelector);
+        }
+        else{
+            removeAllMenuSelection();
+            hideAllPortfolioContent();
+            showPortfolioContent("robot");
         }
         
     }
