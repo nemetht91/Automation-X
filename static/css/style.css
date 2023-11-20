@@ -498,12 +498,13 @@ footer a{
   }
 
   .services-navigation .selected {
-    color: var(--primary-color);
+    color: #fff;
+    background-color: var(--primary-color);
   }
 
   .services-navigation .selected:hover{
-    color: var(--primary-color);
-    background-color: var(--light-color);
+    color: #fff;
+    background-color: var(--primary-color);
   }
 
   .services-portfolio{
@@ -557,7 +558,8 @@ footer a{
         grid-template-columns: 1fr;
     }
 
-    .showcase h1{
+    .showcase h1,
+    .services-intro .intro-text h1{
         font-size: 30px;
     }
 
@@ -565,7 +567,8 @@ footer a{
         font-size: 20px;
     }
 
-    .showcase p{
+    .showcase p,
+    .services-intro .intro-text p{
         font-size: 1rem;
     }
 
@@ -616,7 +619,9 @@ footer a{
         display: none;
     }
 
-  
+    .services-navigation .nav button{
+        padding: 5px 20px;
+    }
    
    
   }
@@ -625,7 +630,8 @@ footer a{
 
 
 
-    .showcase h1{
+    .showcase h1
+    {
         font-size: 26px;
     }
 
@@ -680,4 +686,29 @@ footer a{
       .flip-card-back{
         font-size: 0.8rem;
       }
+
+      .services-intro .intro-text p{
+        display: none;
+      }
+
+      .services-intro .container{
+        background-size: contain;
+      }
+
+      .services-navigation .nav{
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .services-portfolio .content .grid{
+        grid-template-columns: auto repeat(2, 0px);
+        width: 400px;
+        overflow: hidden;
+      }
+
+      .services-portfolio .content .grid:nth-child(2){
+        visibility: hidden;
+      }
+    
+      
   }
