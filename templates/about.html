@@ -1,60 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Automation X</title>
-    <link rel="image_src" href="../static/img/robot1.jpg" />
-    <link rel="image_src" href="../static/img/robot2.jpg" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
-    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../static/css/utilities.css">
-    <link rel="stylesheet" href="../static/css/style.css">
-</head>
-<body>
-    <!--Navbar-->
-    <section class="navbar">
-        <div class="container flex">
-            <img src="../static/img/AUTOMATION X - Lower - Logo.png" alt="Automation X">
-            <div class="toggle"></div>
-            <nav class="links ">
-                <ul>
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="./services.html">Products & Services</a></li>
-                    <li><a href="./projects.html">Case Studies</a></li>
-                    <li><a href="./about.html">About Us</a></li>
-                    <li><a href="./contact.html">Contact Us</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="mobile">
-            <form action="">
-                <ul>
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="./services.html">Products & Services</a></li>
-                    <li><a href="./projects.html">Case Studies</a></li>
-                    <li><a href="./about.html">About Us</a></li>
-                    <li><a href="./contact.html">Contact Us</a></li>
-                    <li><a href="./privacy.html">Privacy Policy</li>
-                </ul>
-            </form>
-            <div class="social-bar">
-                <ul>
-                    <li>
-                        <a href="https://www.linkedin.com/company/automation-x-solutions/" target="_blank" ><i class="fab fa-linkedin fa-2x"></i></a>
-                    </li>
-                    <li>
-                        <a href="malto:you@email.com" class="email-icon">
-                            <i class="fa-solid fa-at"></i>
-                        </a>
-                    </li>
-                </ul>
-                
-            </div>
-        </div>
-     </section>
-
+{% include "header.html" %}
 
      <section class="about">
         <div class="main container">
@@ -64,32 +8,4 @@
          </div>        
      </section>
     
- <!-- footer-->
- <footer>
-    <div class="container flex">
-        <div class="logo flex">
-        <img src="../static/img/AUTOMATION X - Upper - Logo.png" alt="Automation X Logo">
-            <div class="address">
-                <h4>Automation X Ltd.</h4>
-                <p>Address Line 1</p>
-                <p>Postcode</p>
-                <p>City</p>
-            </div>
-        </div>
-        <nav class="links ">
-            <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./about.html">About Us</a></li>
-                <li><a href="./services.html">Services</a></li>
-                <li><a href="./contact.html">Contact Us</a></li>
-                <li><a href="./projects.html">Case Studies</a></li>
-                <li><a href="./privacy.html">Privacy Policy</li>
-            </ul>
-        </nav>  
-        <a href="https://www.linkedin.com/company/automation-x-solutions/" target="_blank" ><i class="fab fa-linkedin fa-2x"></i></a>
-    </div>
-   
- </footer>   
-<script src="../static/js/script.js" charset="UTF-8"></script>
-</body>
-</html>
+{% include "footer.html" %}

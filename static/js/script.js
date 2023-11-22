@@ -83,7 +83,7 @@ for (var i = 0; i < portfolioSelectors.length; i++){
 }
 
 window.addEventListener("load", event =>{
-    if(window.location.href.match('services.html') != null){
+    if(window.location.href.match('services.html') != null || window.location.href.match('services') != null){
         var portfolioSelector = localStorage.getItem("portfolioSelector");
         if (portfolioSelector != null){
             removeAllMenuSelection();
