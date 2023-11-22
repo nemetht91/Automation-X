@@ -4,7 +4,7 @@
     --dark-color:#000;
     --light-color:#f4f4f4e3;
     --text-color: gray;
-    --showcase-background: url("https://github.com/nemetht91/Automation-X/blob/main/static/img/robot2.png?raw=true");
+    --showcase-background: url("../img/robot2.jpg");
 }
 
 /* Basic styling */
@@ -81,7 +81,7 @@ a:hover{
     right: 0;
     width: 60px;
     height: 60px;
-    background: var(--primary-color) url("https://github.com/nemetht91/Automation-X/blob/main/static/img/menu.png?raw=true");
+    background: var(--primary-color) url("../img/menu.png");
     background-size: 30px;
     background-position: center;
     background-repeat: no-repeat;
@@ -90,7 +90,7 @@ a:hover{
   }
   
   .toggle.active{
-    background: var(--primary-color) url("https://github.com/nemetht91/Automation-X/blob/main/static/img/close.png?raw=true");
+    background: var(--primary-color) url("../img/close.png");
     background-size: 25px;
     background-position: center;
     background-repeat: no-repeat;
@@ -437,7 +437,7 @@ footer a{
         to bottom,
         rgb(44, 44, 44),
         rgba(50, 50, 53, 0.055)
-      ), url("https://github.com/nemetht91/Automation-X/blob/main/static/img/products.jpg?raw=true");
+      ), url("../img/products.jpg");
     background-size: cover;
     background-position: right;
     background-repeat: no-repeat;

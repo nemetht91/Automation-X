@@ -1,5 +1,5 @@
-const showcaseImg = ['url("https://github.com/nemetht91/Automation-X/blob/main/static/img/robot2.png?raw=true")',
-                        'url("https://github.com/nemetht91/Automation-X/blob/main/static/img/robot1.jpg?raw=true")'];
+const showcaseImg = ['url("../img/robot2.jpg")',
+                        'url("../img/robot1.jpg")'];
 
 var imgCnt = 0;
 
