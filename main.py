@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request
 from os import environ
+from forms import *
 
 
 app = Flask(__name__)
@@ -26,8 +27,14 @@ def get_about():
     return render_template("about.html")
 
 
-@app.route('/contact')
+@app.route('/contact', methods=["GET", "POST"])
 def get_contact():
+    if request.method == "POST":
+        contact_form = ContactForm(request.form)
+        if not contact_form.is_valid():
+            print("Oops something went wrong")
+        contact_form.print_form()
+        return redirect(url_for("get_contact"))
     return render_template("contact.html")
 
 
@@ -37,4 +44,4 @@ def get_privacy():
 
 
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
