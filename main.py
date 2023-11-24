@@ -32,15 +32,25 @@ def get_contact():
     if request.method == "POST":
         contact_form = ContactForm(request.form)
         if not contact_form.is_valid():
-            print("Oops something went wrong")
+            return render_template("failed.html")
         contact_form.print_form()
-        return redirect(url_for("get_contact"))
+        return render_template("success.html")
     return render_template("contact.html")
 
 
 @app.route('/privacy')
 def get_privacy():
     return render_template("privacy.html")
+
+
+@app.route('/success')
+def get_success():
+    return render_template("success.html")
+
+
+@app.route('/failed')
+def get_failed():
+    return render_template("failed.html")
 
 
 if __name__ == "__main__":

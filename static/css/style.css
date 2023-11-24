@@ -323,7 +323,9 @@ footer a{
 .contact,
 .projects,
 .about,
-.privacy{
+.privacy,
+.success,
+.failed{
     max-width: 100%;
     padding-top: 60PX;
     background-color: var(--light-color);
@@ -542,6 +544,42 @@ footer a{
     padding-right: 10px;
   }
 
+  /* Feedback */
+  .feedback{
+    text-align: center;
+    height: 700px;
+    color: var(--light-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-items: center;
+  }
+
+  .feedback h1{
+    font-size: 2rem;
+  }
+
+  .feedback p{
+    font-size: 1.2rem;
+    max-width: 400px;
+  }
+
+  .success .feedback{
+    background-image: url("../img/success.jpg");
+  }
+
+  .failed .feedback{
+    background-image: url("../img/failed.jpg");
+  }
+
+  .feedback a{
+    color: #fff;
+    font-size: 0.7rem;
+    
+  }
 
   @media(max-width: 950px){
 
@@ -718,5 +756,7 @@ footer a{
         visibility: hidden;
       }
     
-      
+      .feedback{
+        height: 500px;
+      }
   }
