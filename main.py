@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, request
 from os import environ
 from forms import *
+from notifier_manager import NotifierManger
 
 
 app = Flask(__name__)
@@ -31,9 +32,9 @@ def get_about():
 def get_contact():
     if request.method == "POST":
         contact_form = ContactForm(request.form)
-        if not contact_form.is_valid():
+        is_success = process_form(contact_form)
+        if not is_success:
             return render_template("failed.html")
-        contact_form.print_form()
         return render_template("success.html")
     return render_template("contact.html")
 
@@ -51,6 +52,13 @@ def get_success():
 @app.route('/failed')
 def get_failed():
     return render_template("failed.html")
+
+
+def process_form(form: ContactForm):
+    if not form.is_valid():
+        return False
+    notifier = NotifierManger()
+    return notifier.send_email(form)
 
 
 if __name__ == "__main__":
