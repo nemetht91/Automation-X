@@ -378,6 +378,10 @@ footer a{
     width: 100%;
 }
 
+.contact form :nth-child(5){
+    grid-column: span 2;
+}
+
 .contact form textarea[name="message"]{
     grid-column: span 2;
     grid-row: span 3;
@@ -713,13 +717,13 @@ footer a{
         padding: 20px 0px;
       }
     
-      .contact form textarea[name="message"]{
+      .contact form textarea[name="message"],
+      .contact form input[type="submit"],
+      .contact form :nth-child(5){
         grid-column: span 1;
       }
       
-      .contact form input[type="submit"]{
-        grid-column: span 1;
-      }
+
 
       .flip-card{
         padding: 0;

@@ -3,6 +3,7 @@ class ContactForm:
         self.firstname = form.get("firstname")
         self.lastname = form.get("lastname")
         self.email = form.get("email")
+        self.company = form.get("company")
         self.subject = form.get("subject")
         self.message = form.get("message")
 
@@ -33,5 +34,6 @@ class ContactForm:
     def print_form(self):
         print(self.firstname + " " + self.lastname)
         print(self.email)
+        print(self.company)
         print(self.subject)
         print(self.message)
