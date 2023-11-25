@@ -4,6 +4,7 @@ class ContactForm:
         self.lastname = form.get("lastname")
         self.email = form.get("email")
         self.company = form.get("company")
+        self.phone = form.get("phone")
         self.subject = form.get("subject")
         self.message = form.get("message")
 

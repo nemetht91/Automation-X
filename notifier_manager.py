@@ -1,6 +1,6 @@
 from EamilSender import EmailSender
 from forms import ContactForm
-from settings import SMTP_SERVER, SMTP_EMAIL, SMTP_PASSWORD
+from settings import SMTP_SERVER, SMTP_EMAIL, SMTP_PASSWORD, ENQUIRY_RECEIVER
 
 
 class NotifierManger:
@@ -9,13 +9,15 @@ class NotifierManger:
 
     def send_email(self, form: ContactForm):
         message = self.create_email_message(form)
-        return self.email_sender.send_email(form.email, message)
+        return self.email_sender.send_email(ENQUIRY_RECEIVER, message)
 
     @staticmethod
     def create_email_message(form: ContactForm):
         subject = f"New enquiry: {form.subject}"
         letter = f"Firstname: {form.firstname}\n" \
                  f"Lastname: {form.lastname}\n" \
+                 f"Email: {form.email}\n" \
+                 f"Phone number: {form.phone}\n" \
                  f"Company: {form.company}\n" \
                  f"\n{form.message}"
         email_message = f"Subject:{subject}\n\n{letter}"
