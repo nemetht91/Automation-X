@@ -720,7 +720,9 @@ footer a{
         grid-column: span 1;
       }
       
-
+      .contact form textarea[name="message"]{
+        height: 100px;
+      }
 
       .flip-card{
         padding: 0;
