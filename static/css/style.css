@@ -550,7 +550,7 @@ footer a{
   .feedback{
     text-align: center;
     height: 700px;
-    color: var(--light-color);
+    color: var(--secondary-color);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -565,7 +565,7 @@ footer a{
   }
 
   .feedback p{
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     max-width: 400px;
   }
 
