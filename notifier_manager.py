@@ -1,18 +1,30 @@
-from EamilSender import EmailSender
+from EamilSender import APIEmailSender
 from forms import ContactForm
-from settings import SMTP_SERVER, SMTP_EMAIL, SMTP_PASSWORD, ENQUIRY_RECEIVER
+from settings import EMAIL_DOMAIN, EMAIL_API_KEY, SENDER, ENQUIRY_RECEIVER
 
 
 class NotifierManger:
     def __init__(self):
-        self.email_sender = EmailSender(server=SMTP_SERVER, email=SMTP_EMAIL, password=SMTP_PASSWORD)
+        self.email_sender = APIEmailSender(domain_name=EMAIL_DOMAIN, api_key=EMAIL_API_KEY, sender=SENDER)
 
     def send_email(self, form: ContactForm):
-        message = self.create_email_message(form)
-        return self.email_sender.send_email(ENQUIRY_RECEIVER, message)
+        subject, letter = self.create_api_email_message(form)
+        return self.email_sender.send_email(ENQUIRY_RECEIVER, subject, letter)
 
     @staticmethod
-    def create_email_message(form: ContactForm):
+    def create_api_email_message(form: ContactForm):
+        subject = f"New enquiry: {form.subject}"
+        letter = f"Firstname: {form.firstname}\n" \
+                 f"Lastname: {form.lastname}\n" \
+                 f"Email: {form.email}\n" \
+                 f"Phone number: {form.phone}\n" \
+                 f"Company: {form.company}\n" \
+                 f"\n{form.message}"
+
+        return subject, letter
+
+    @staticmethod
+    def create_smtp_email_message(form: ContactForm):
         subject = f"New enquiry: {form.subject}"
         letter = f"Firstname: {form.firstname}\n" \
                  f"Lastname: {form.lastname}\n" \

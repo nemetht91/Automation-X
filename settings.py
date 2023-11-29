@@ -1,9 +1,9 @@
 from os import environ
 
-# SMTP Server
-SMTP_SERVER = "smtp.gmail.com"
-SMTP_EMAIL = "tamas.testing@gmail.com"
-SMTP_PASSWORD = environ.get("SMTP_PASSWORD")
+# Email API Server
+EMAIL_DOMAIN = environ.get("EMAIL_DOMAIN")
+EMAIL_API_KEY = environ.get("EMAIL_API_KEY")
+SENDER = environ.get("SENDER")
 
 # Enquiry handler
-ENQUIRY_RECEIVER = "nemeth.t91@gmail.com"
+ENQUIRY_RECEIVER = environ.get("ENQUIRY_RECEIVER")
