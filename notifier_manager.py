@@ -1,15 +1,16 @@
-from EamilSender import APIEmailSender
+from EamilSender import MailtrapEmailSender
 from forms import ContactForm
-from settings import EMAIL_DOMAIN, EMAIL_API_KEY, SENDER, ENQUIRY_RECEIVER
+from settings import *
 
 
 class NotifierManger:
     def __init__(self):
-        self.email_sender = APIEmailSender(domain_name=EMAIL_DOMAIN, api_key=EMAIL_API_KEY, sender=SENDER)
+        self.email_sender = MailtrapEmailSender(sender_email=MAILTRAP_EMAIL, sender_name=MAILTRAP_SENDER,
+                                                token=MAILTRAP_TOKEN)
 
     def send_email(self, form: ContactForm):
         subject, letter = self.create_api_email_message(form)
-        return self.email_sender.send_email(ENQUIRY_RECEIVER, subject, letter)
+        return self.email_sender.send_email(ENQUIRY_RECEIVER, subject, letter, category="Enquiry")
 
     @staticmethod
     def create_api_email_message(form: ContactForm):

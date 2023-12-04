@@ -1,11 +1,37 @@
 import smtplib
 import requests
+import mailtrap as mt
 
 SEND_EMAIL_EXCEPTIONS = (smtplib.SMTPHeloError, smtplib.SMTPAuthenticationError, smtplib.SMTPNotSupportedError,
                          smtplib.SMTPException, smtplib.SMTPRecipientsRefused, smtplib.SMTPSenderRefused)
 
 
-class APIEmailSender:
+class MailtrapEmailSender:
+    def __init__(self, sender_email, sender_name, token):
+        self.sender_email = sender_email
+        self.sender_name = sender_name
+        self.token = token
+
+    def send_email(self, receiver_address, subject, message, category):
+        mail = self.__create_mail(receiver_address, subject, message, category)
+        client = mt.MailtrapClient(token=self.token)
+        try:
+            client.send(mail)
+            return True
+        except:
+            return False
+
+    def __create_mail(self, receiver_address, subject, message, category):
+        return mt.Mail(
+            sender=mt.Address(email=self.sender_email, name=self.sender_name),
+            to=[mt.Address(email=receiver_address)],
+            subject=subject,
+            text=message,
+            category=category,
+        )
+
+
+class MailGunEmailSender:
     def __init__(self, domain_name, api_key, sender):
         self.domain_name = domain_name
         self.api_key = api_key
@@ -45,4 +71,6 @@ class SMTPEmailSender:
             return False
         else:
             return True
+
+
 
