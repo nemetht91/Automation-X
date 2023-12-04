@@ -1,8 +1,8 @@
  <!-- footer-->
      <footer>
         <div class="container flex">
-            <div class="logo flex">
-            <img src="../static/img/AUTOMATION X - Upper - Logo.png" alt="Automation X Logo">
+            <div class="logo box">
+                <img src="../static/img/AUTOMATION X - Upper - Logo.png" alt="Automation X Logo">
                 <div class="address">
                     <h4>Automation X Ltd.</h4>
                     <p>Address Line 1</p>
@@ -10,7 +10,7 @@
                     <p>City</p>
                 </div>
             </div>
-            <nav class="links ">
+            <nav class="links box">
                 <ul>
                     <li><a href="{{ url_for('get_home') }}">Home</a></li>
                     <li><a href="{{ url_for('get_about') }}">About Us</a></li>
@@ -20,7 +20,10 @@
                     <li><a href="{{ url_for('get_privacy') }}">Privacy Policy</a></li>
                 </ul>
             </nav>
-            <a href="https://www.linkedin.com/company/automation-x-solutions/" target="_blank" ><i class="fab fa-linkedin fa-2x"></i></a>
+            <a class="box" href="https://www.linkedin.com/company/automation-x-solutions/" target="_blank" ><i class="fab fa-linkedin fa-2x"></i></a>
+        </div>
+        <div class="container copyright">
+            <i class="fa-regular fa-copyright"></i> {{ now.year }} Created By <a href="https://www.tnemeth.co.uk" target="_blank">Tamas Nemeth</a> for Automation X; All right are reserved
         </div>
 
      </footer>

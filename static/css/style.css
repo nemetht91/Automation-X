@@ -305,6 +305,21 @@ footer .flex{
     align-items: center;
 }
 
+.box {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+footer .logo{
+    justify-content: flex-start;
+}
+
+footer .links{
+    justify-content: center;
+
+}
+
 footer nav ul{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -316,6 +331,12 @@ footer li{
 
 footer a{
     color: var(--text-color);
+}
+
+footer .copyright{
+    text-align: center;
+    font-size: 0.8rem;
+    padding-bottom: 5px;
 }
 
 /* Contact */
@@ -386,6 +407,8 @@ footer a{
     width: 100%;
     padding: 10px 3px;
     resize: none;
+    text-indent: 0;
+    padding-left: 8px;
   }
   
   .contact form input[type="submit"]{
@@ -669,6 +692,10 @@ footer a{
 
     .services-navigation .nav button{
         padding: 5px 20px;
+    }
+
+    footer .logo{
+        flex: 2;
     }
    
    

@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request
 from os import environ
 from forms import *
 from notifier_manager import NotifierManger
-
+from datetime import datetime
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = environ.get("SECRET_KEY")
@@ -52,6 +52,11 @@ def get_success():
 @app.route('/failed')
 def get_failed():
     return render_template("failed.html")
+
+
+@app.context_processor
+def inject_now():
+    return {'now': datetime.utcnow()}
 
 
 def process_form(form: ContactForm):
