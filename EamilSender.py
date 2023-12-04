@@ -18,7 +18,8 @@ class MailtrapEmailSender:
         try:
             client.send(mail)
             return True
-        except:
+        except (mt.exceptions.MailtrapError, mt.exceptions.APIError, mt.exceptions.AuthorizationError) as e:
+            print(e)
             return False
 
     def __create_mail(self, receiver_address, subject, message, category):
