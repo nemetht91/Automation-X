@@ -1,6 +1,7 @@
 import smtplib
 import requests
 import mailtrap as mt
+from settings import *
 
 SEND_EMAIL_EXCEPTIONS = (smtplib.SMTPHeloError, smtplib.SMTPAuthenticationError, smtplib.SMTPNotSupportedError,
                          smtplib.SMTPException, smtplib.SMTPRecipientsRefused, smtplib.SMTPSenderRefused)
@@ -16,7 +17,7 @@ class MailtrapEmailSender:
         mail = self.__create_mail(receiver_address, subject, message, category)
         client = mt.MailtrapClient(token=self.token)
         try:
-            client.send(mail)
+            response = client.send(mail)
             return True
         except (mt.exceptions.MailtrapError, mt.exceptions.APIError, mt.exceptions.AuthorizationError) as e:
             print(e)
@@ -72,6 +73,5 @@ class SMTPEmailSender:
             return False
         else:
             return True
-
 
 

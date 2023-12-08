@@ -420,6 +420,10 @@ footer .copyright{
     font-size: 1.1rem;
   }
 
+  .contact form input[type="submit"]:hover{
+    cursor: pointer;
+  }
+
   .contact .details{
     margin: 30px 100px;
   }
