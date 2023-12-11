@@ -8,28 +8,44 @@ SEND_EMAIL_EXCEPTIONS = (smtplib.SMTPHeloError, smtplib.SMTPAuthenticationError,
 
 
 class MailtrapEmailSender:
-    def __init__(self, sender_email, sender_name, token):
-        self.sender_email = sender_email
-        self.sender_name = sender_name
+    def __init__(self, domain: str, token: str):
+        self.domain = domain
         self.token = token
 
-    def send_email(self, receiver_address, subject, message, category):
-        mail = self.__create_mail(receiver_address, subject, message, category)
+    def send_enquiry(self, sender_name, receiver_address, subject, message, category):
+        mail = self.__create_mail(sender_name, receiver_address, subject, message, category)
+        return self.__send_mail(mail)
+
+    def send_auto_reply(self, sender_name: str, receiver_address: str, template_uuid: str,
+                        template_variables: dict):
+        mail = self.__create_template_mail(sender_name, receiver_address, template_uuid, template_variables)
+        return self.__send_mail(mail)
+
+    def __send_mail(self, mail):
         client = mt.MailtrapClient(token=self.token)
         try:
-            response = client.send(mail)
+            client.send(mail)
             return True
         except (mt.exceptions.MailtrapError, mt.exceptions.APIError, mt.exceptions.AuthorizationError) as e:
             print(e)
             return False
 
-    def __create_mail(self, receiver_address, subject, message, category):
+    def __create_mail(self, sender_name: str, receiver_address: str, subject: str, message: str, category: str):
         return mt.Mail(
-            sender=mt.Address(email=self.sender_email, name=self.sender_name),
+            sender=mt.Address(email=f"{sender_name.lower()}@{self.domain}", name=sender_name),
             to=[mt.Address(email=receiver_address)],
             subject=subject,
             text=message,
             category=category,
+        )
+
+    def __create_template_mail(self, sender_name: str, receiver_address: str, template_uuid: str,
+                               template_variables: dict):
+        return mt.MailFromTemplate(
+            sender=mt.Address(email=f"{sender_name.lower()}@{self.domain}", name=sender_name),
+            to=[mt.Address(email=receiver_address)],
+            template_uuid=template_uuid,
+            template_variables=template_variables
         )
 
 
@@ -73,5 +89,3 @@ class SMTPEmailSender:
             return False
         else:
             return True
-
-

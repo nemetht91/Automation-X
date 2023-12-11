@@ -63,7 +63,10 @@ def process_form(form: ContactForm):
     if not form.is_valid():
         return False
     notifier = NotifierManger()
-    return notifier.send_email(form)
+    is_success = notifier.send_enquiry(form)
+    if is_success:
+        notifier.send_auto_reply(form)
+    return is_success
 
 
 if __name__ == "__main__":
