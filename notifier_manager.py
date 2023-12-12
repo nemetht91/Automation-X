@@ -12,12 +12,19 @@ class NotifierManger:
         return self.email_sender.send_enquiry(MAILTRAP_SENDER, ENQUIRY_RECEIVER, subject, letter, category="Enquiry")
 
     def send_auto_reply(self, form: ContactForm):
+        message = self.split_into_list(form.message)
         template_variables = {
             "first_name": form.firstname,
             "last_name": form.lastname,
-            "enquiry": form.message
+            "enquiry": {
+                "lines": message
+            }
         }
         return self.email_sender.send_auto_reply("no-reply", form.email, MAILTRAP_NO_REPLY_UUID, template_variables)
+
+    @staticmethod
+    def split_into_list(text: str) -> []:
+        return text.split("\n")
 
     @staticmethod
     def create_api_email_message(form: ContactForm):
