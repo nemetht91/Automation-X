@@ -20,7 +20,7 @@ class NotifierManger:
                 "lines": message
             }
         }
-        return self.email_sender.send_auto_reply("no-reply", form.email, MAILTRAP_NO_REPLY_UUID, template_variables)
+        return self.email_sender.send_auto_reply("Automation-X", form.email, MAILTRAP_NO_REPLY_UUID, template_variables)
 
     @staticmethod
     def split_into_list(text: str) -> []:

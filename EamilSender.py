@@ -42,7 +42,7 @@ class MailtrapEmailSender:
     def __create_template_mail(self, sender_name: str, receiver_address: str, template_uuid: str,
                                template_variables: dict):
         return mt.MailFromTemplate(
-            sender=mt.Address(email=f"{sender_name.lower()}@{self.domain}", name=sender_name),
+            sender=mt.Address(email=f"no-reply@{self.domain}", name=sender_name),
             to=[mt.Address(email=receiver_address)],
             template_uuid=template_uuid,
             template_variables=template_variables
