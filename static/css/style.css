@@ -346,7 +346,8 @@ footer .copyright{
 .about,
 .privacy,
 .success,
-.failed{
+.failed,
+.study{
     max-width: 100%;
     padding-top: 60PX;
     background-color: var(--light-color);
@@ -608,6 +609,47 @@ footer .copyright{
     color: #fff;
     font-size: 0.7rem;
     
+  }
+
+  /* Case Study */
+  .study .title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--text-color);
+    color: var(--light-color);
+  }
+
+  .study .title h1{
+    font-size: 2.5rem;
+    padding: 40px;
+  }
+
+  .study .title img{
+    height: 400px;
+  }
+
+  .study .content{
+    max-width: 800px;
+  }
+
+  .study .content .section{
+    margin: 40px 0px;
+  }
+
+  .study .content .section h2{
+    font-size: 1.5rem;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .study .content ol{
+    padding-left: 15px;
+  }
+
+  .study .content li{
+    padding-bottom: 15px;
+    font-weight: 550;
   }
 
   @media(max-width: 950px){

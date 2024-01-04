@@ -23,6 +23,11 @@ def get_projects():
     return render_template("projects.html")
 
 
+@app.route("/casestudy")
+def get_case_study():
+    return render_template("study.html")
+
+
 @app.route('/about')
 def get_about():
     return render_template("about.html")
