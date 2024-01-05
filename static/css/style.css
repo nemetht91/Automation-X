@@ -622,18 +622,29 @@ footer .copyright{
 
   .study .title h1{
     font-size: 2.5rem;
-    padding: 40px;
+    padding: 30px;
+  }
+
+  .study .title .line{
+    background-color: var(--primary-color);
+    height: 7px;
+    width: 200px;
+    margin-left: 30px;
   }
 
   .study .title img{
-    height: 400px;
+    width: 50%;
   }
 
   .study .content{
-    max-width: 800px;
+    background-image: url("../img/AUTOMATION\ X\ -\ Upper\ -\ Logo.png");
+    background-position: right;
+    background-size: 30%;
+    background-repeat: no-repeat;
   }
 
   .study .content .section{
+    max-width: 800px;
     margin: 40px 0px;
   }
 
@@ -652,7 +663,13 @@ footer .copyright{
     font-weight: 550;
   }
 
-  @media(max-width: 950px){
+  @media(max-width: 1200px){
+    .study .content{
+      background-image: none;
+    }
+  }
+
+  @media(max-width: 1050px){
 
 
     /* Navbar */
@@ -742,6 +759,15 @@ footer .copyright{
 
     footer .logo{
         flex: 2;
+    }
+
+    .study .title h1{
+      font-size: 1.5rem;
+      padding-top: 20px;
+    }
+
+    .study .title .line{
+      height: 5px;
     }
    
    
@@ -846,7 +872,23 @@ footer .copyright{
         max-width: 400px;
       }
 
-      
+
+      .study .title{
+        flex-direction: column;
+        max-height: 700px;
+      }
+
+      .study .title img{
+        width: 100%;
+      }
+
+      .study .title h1{
+        
+      }
+  
+      .study .title .line{
+        margin-top: 20px;
+      }
   }
 
   @media(max-width: 480px){
