@@ -229,6 +229,7 @@ a:hover{
 
 .offering .service p{
     padding: 10px 0;
+    height: 100px;
 }
 
 .offering .service .service-img{
@@ -562,6 +563,7 @@ footer .copyright{
   }
 
   .services-portfolio h2{
+    font-size: 2rem;
     padding-bottom: 20px;
   }
 
@@ -573,6 +575,17 @@ footer .copyright{
     float: left;
     padding-right: 10px;
   }
+
+  .services-portfolio .content p{
+    margin: 10px 0px;
+  }
+
+  .services-portfolio .advantages h3{
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+  }
+
 
   /* Feedback */
   .feedback{
@@ -624,7 +637,7 @@ footer .copyright{
 
   .projects .studies .study{
     display: grid;
-    grid-template-columns: 200px auto;
+    grid-template-columns: 300px auto;
     margin: 0px;
     padding: 0px;
     padding: 20px 0px;
@@ -632,7 +645,9 @@ footer .copyright{
   }
 
   .projects .studies .study img{
-    height: 100px;
+    width: 250px; 
+    height: 150px; 
+    object-fit: cover;
   }
 
   .projects .studies .study h2{
@@ -960,6 +975,21 @@ footer .copyright{
         font-size: 1rem;
         max-width: 400px;
       }
+
+      .projects .studies .study{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+    
+      .projects .studies .study img{
+        width: 100%;
+        height: 350px; 
+        object-fit: cover;
+      }
+    
+    
 
 
       .study .title{

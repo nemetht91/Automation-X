@@ -59,6 +59,11 @@ def get_failed():
     return render_template("failed.html")
 
 
+@app.route('/study')
+def get_study():
+    return render_template("study.html")
+
+
 @app.context_processor
 def inject_now():
     return {'now': datetime.utcnow()}
