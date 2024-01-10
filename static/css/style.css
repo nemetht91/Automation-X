@@ -572,18 +572,67 @@ footer .copyright{
   }
 
   .services-portfolio .consultancy img{
-    float: left;
     padding-right: 10px;
+  }
+
+  .services-portfolio .consultancy-intro{
+    display: flex;
+
   }
 
   .services-portfolio .content p{
     margin: 10px 0px;
   }
 
+ 
+
   .services-portfolio .advantages h3{
     margin-top: 30px;
     margin-bottom: 20px;
     font-size: 1.5rem;
+  }
+
+  .services-portfolio .advantages h4{
+    padding: 0px 5px;
+    width: max-content;
+    margin-bottom: 0px;
+  }
+
+  .services-portfolio .advantages ol {
+    list-style: none;
+    counter-reset: my-awesome-counter;
+  }
+
+  .services-portfolio .advantages ol li {
+    counter-increment: my-awesome-counter;
+    display: flex;
+    padding: 10px 0px;
+  }
+
+  .services-portfolio .advantages ol li::before {
+    content: counter(my-awesome-counter) ". ";
+    color: #fff;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    padding: 0px 5px;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+  }
+
+  .services-portfolio .advantages li div{
+    background-color: #fff;
+    border: var(--primary-color) solid 1px;
+    width: 100%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 5px;
+  }
+
+  .services-portfolio .advantages li p{
+    padding: 0px 5px;
+    margin: 5px 0px;
   }
 
 
