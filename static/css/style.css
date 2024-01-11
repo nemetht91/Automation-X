@@ -602,7 +602,6 @@ footer .copyright{
 
   .services-portfolio .advantages h4{
     padding: 0px 5px;
-    width: max-content;
     margin-bottom: 0px;
   }
 
@@ -1014,6 +1013,10 @@ footer .copyright{
         font-size: 0.9rem;
     }
 
+    .offering .service p{
+      height: fit-content;
+  }
+
     .contact .grid{
         gap: 0px;
         display: flex;
@@ -1099,6 +1102,9 @@ footer .copyright{
       }
     
     
+      .projects .studies{
+        margin: 20px 0px;
+      }
 
 
       .study .title{
