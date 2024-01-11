@@ -73,10 +73,18 @@ function hideAllPortfolioContent(){
 
 /* Starting Portolio selection */
 const portfolioSelectors = document.querySelectorAll(".offering .container .btn")
+const tagSelectors = document.querySelectorAll(".projects .studies .study .tag")
 
 
 for (var i = 0; i < portfolioSelectors.length; i++){
     portfolioSelectors[i].addEventListener("click", event => {
+        var portfolioSelector = event.currentTarget.getAttribute("id");
+        localStorage.setItem("portfolioSelector", portfolioSelector);
+    });
+}
+
+for (var i = 0; i < tagSelectors.length; i++){
+    tagSelectors[i].addEventListener("click", event => {
         var portfolioSelector = event.currentTarget.getAttribute("id");
         localStorage.setItem("portfolioSelector", portfolioSelector);
     });
