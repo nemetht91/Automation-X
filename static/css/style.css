@@ -567,17 +567,25 @@ footer .copyright{
     padding-bottom: 20px;
   }
 
+  .services-portfolio p{
+    font-size: 1.1rem;
+  }
+
   .services-portfolio .hidden{
     display: none;
   }
 
+  .services-portfolio .simulation img,
   .services-portfolio .consultancy img{
-    padding-right: 10px;
+    padding-left: 10px;
+    width: 600px;
+    object-fit: contain;
   }
 
+  .services-portfolio .simulation-intro,
   .services-portfolio .consultancy-intro{
     display: flex;
-
+    align-items: center;
   }
 
   .services-portfolio .content p{
@@ -633,6 +641,12 @@ footer .copyright{
   .services-portfolio .advantages li p{
     padding: 0px 5px;
     margin: 5px 0px;
+  }
+
+  p.conclude{
+    padding-top: 15px;
+    font-weight: bold;
+    font-size: 1.3rem;
   }
 
 
@@ -699,9 +713,18 @@ footer .copyright{
     object-fit: cover;
   }
 
+  .projects .studies .study img:hover{
+    transform: scale(1.02);
+    transition-duration: 0.2s;
+  }
+
   .projects .studies .study h2{
     color: var(--text-color);
     background-color: var(--light-color);
+  }
+
+  .projects .studies .study h2:hover{
+    color: var(--primary-color);
   }
 
 
@@ -714,6 +737,19 @@ footer .copyright{
 
 .projects p{
     font-size: 1.1rem;
+}
+
+.projects .study ul{
+  display: flex;
+}
+
+.projects .study ul li a{
+  padding-right: 5px;
+  color: var(--text-color);
+}
+
+.projects .study ul li a:hover{
+  color: var(--primary-color);
 }
 
   /* Case Study */
@@ -896,6 +932,41 @@ footer .copyright{
         padding: 5px 20px;
     }
 
+    .services-navigation .nav{
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    .services-portfolio .content .grid{
+      grid-template-columns: auto repeat(2, 0px);
+      width: 400px;
+      overflow: hidden;
+    }
+
+    .services-portfolio .content .grid:nth-child(2){
+      visibility: hidden;
+    }
+
+    .services-portfolio .simulation-intro,
+    .services-portfolio .consultancy-intro{
+      flex-direction: column-reverse;
+  
+    }
+
+    .services-portfolio .simulation-intro img,
+    .services-portfolio .consultancy-intro img{
+      width: 100%;
+      object-fit: cover;
+      padding-left: 0px;
+      height: fit-content;
+    }
+
+    p.conclude{
+      padding-top: 15px;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
     footer .logo{
         flex: 2;
     }
@@ -996,20 +1067,9 @@ footer .copyright{
         background-size: contain;
       }
 
-      .services-navigation .nav{
-        display: grid;
-        grid-template-columns: 1fr;
-      }
+   
 
-      .services-portfolio .content .grid{
-        grid-template-columns: auto repeat(2, 0px);
-        width: 400px;
-        overflow: hidden;
-      }
 
-      .services-portfolio .content .grid:nth-child(2){
-        visibility: hidden;
-      }
     
       .feedback{
         height: 500px;
