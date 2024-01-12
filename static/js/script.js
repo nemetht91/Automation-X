@@ -105,4 +105,20 @@ window.addEventListener("load", event =>{
         }
         
     }
-});    
+});
+
+/* Flip card on mobile device */
+
+const flipCard = document.querySelectorAll('.flip-card');
+
+flipCard.forEach((element) => {
+  // Add touchstart event listener
+  flipCard.addEventListener('touchstart', () => {
+    flipCard.classList.add('touch-hover-effect');
+  });
+
+  flipCard.addEventListener('touchend', () => {
+    // Remove touch effect
+    flipCard.classList.remove('touch-hover-effect');
+  });
+});
