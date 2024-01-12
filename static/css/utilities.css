@@ -95,3 +95,9 @@
     align-items: center;
     transform: rotateY(180deg);
   }
+
+  @media(max-width: 700px){
+    .flip-card:active .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+  }
