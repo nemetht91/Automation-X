@@ -109,7 +109,7 @@ window.addEventListener("load", event =>{
 
 /* Flip card on mobile device */
 
-const flipCards = document.querySelectorAll('.flip-card');
+const flipCards = document.querySelectorAll('.flip-card-inner');
 
 flipCards.forEach((flipCard) => {
   // Add touchstart event listener
