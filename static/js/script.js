@@ -109,9 +109,9 @@ window.addEventListener("load", event =>{
 
 /* Flip card on mobile device */
 
-const flipCard = document.querySelectorAll('.flip-card');
+const flipCards = document.querySelectorAll('.flip-card');
 
-flipCard.forEach((element) => {
+flipCards.forEach((flipCard) => {
   // Add touchstart event listener
   flipCard.addEventListener('touchstart', () => {
     flipCard.classList.add('touch-hover-effect');
