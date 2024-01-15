@@ -2,10 +2,44 @@ from flask import Flask, render_template, redirect, url_for, request
 from os import environ
 from forms import *
 from notifier_manager import NotifierManger
-from datetime import datetime
+from datetime import datetime, date
+import sqlalchemy.exc
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import relationship
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = environ.get("SECRET_KEY")
+
+##CONNECT TO DB
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///automationxdb'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+##CONFIGURE TABLES
+
+
+class CaseStudy(db.Model):
+    __tablename__ = "case_studies"
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(250), unique=True, nullable=False)
+    img_url = db.Column(db.String(250), nullable=False)
+    tag_robot = db.Column(db.Boolean, nullable=True)
+    tag_cobot = db.Column(db.Boolean, nullable=True)
+    tag_amr = db.Column(db.Boolean, nullable=True)
+    tag_simulation = db.Column(db.Boolean, nullable=True)
+    tag_consultancy = db.Column(db.Boolean, nullable=True)
+    date = db.Column(db.String(250), nullable=False)
+    objectives = db.Column(db.Text, nullable=False)
+    solution = db.Column(db.Text, nullable=False)
+    benefit1 = db.Column(db.String(250), nullable=True)
+    benefit2 = db.Column(db.String(250), nullable=True)
+    benefit3 = db.Column(db.String(250), nullable=True)
+    benefit4 = db.Column(db.String(250), nullable=True)
+    benefit5 = db.Column(db.String(250), nullable=True)
+
+
+with app.app_context():
+    db.create_all()
 
 
 @app.route('/')
@@ -20,12 +54,14 @@ def get_services():
 
 @app.route('/projects')
 def get_projects():
-    return render_template("projects.html")
+    case_studies = CaseStudy.query.all()
+    return render_template("projects.html", case_studies=case_studies)
 
 
-@app.route("/casestudy")
-def get_case_study():
-    return render_template("study.html")
+@app.route("/casestudy/<int:case_study_id>")
+def get_case_study(case_study_id):
+    case_study = CaseStudy.query.get(case_study_id)
+    return render_template("study.html", case_study=case_study)
 
 
 @app.route('/about')
@@ -59,9 +95,35 @@ def get_failed():
     return render_template("failed.html")
 
 
-@app.route('/study')
-def get_study():
-    return render_template("study.html")
+@app.route('/create', methods=["GET", "POST"])
+def create_case_study():
+    if request.method == "POST":
+        with app.app_context():
+            case_study = create_new_case_study(request.form)
+            db.session.add(case_study)
+            db.session.commit()
+        return redirect(url_for("get_projects"))
+    return render_template("study_edit.html")
+
+
+def create_new_case_study(form):
+    return CaseStudy(
+        title=form.get("title"),
+        img_url=form.get("image"),
+        tag_robot=True if form.get("robot") else False,
+        tag_cobot=True if form.get("cobot") else False,
+        tag_amr=True if form.get("amr") else False,
+        tag_simulation=True if form.get("simulation") else False,
+        tag_consultancy=True if form.get("consultancy") else False,
+        date=date.today().strftime("%B %d, %Y"),
+        objectives=form.get("objectives"),
+        solution=form.get("solution"),
+        benefit1=form.get("benefit1"),
+        benefit2=form.get("benefit2"),
+        benefit3=form.get("benefit3"),
+        benefit4=form.get("benefit4"),
+        benefit5=form.get("benefit5")
+    )
 
 
 @app.context_processor

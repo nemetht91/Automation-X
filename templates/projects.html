@@ -8,51 +8,42 @@
                     </p>
                 </div>
                 <div class="studies">
+                    {% for study in case_studies %}
                     <div class="study">
-                        <a href="{{ url_for('get_study') }}"><img src="../static/img/case_study.jpg" alt=""></a>
+                        <a href="{{ url_for('get_case_study', case_study_id=study.id) }}"><img src={{study.img_url}} alt=""></a>
                         <div class="text">
-                            <a href="{{ url_for('get_study') }}"><h2 class="title">Case Studie Title Lorem ipsum dolor sit amet.</h2></a>
+                            <a href="{{ url_for('get_case_study', case_study_id=study.id) }}"><h2 class="title">{{study.title}}.</h2></a>
                             <ul>
+                                {% if study.tag_robot %}
                                 <li>
                                     <a class="tag" href="{{ url_for('get_services') }}" id="robot">Industrial Robot;</a>
                                 </li>
+                                {% endif %}
+                               {% if study.tag_cobot %}
+                                <li>
+                                    <a class="tag" href="{{ url_for('get_services') }}" id="cobot">Cobot;</a>
+                                </li>
+                                {% endif %}
+                                {% if study.tag_amr %}
                                 <li>
                                     <a class="tag" href="{{ url_for('get_services') }}" id="amr">AMR;</a>
                                 </li>
+                                {% endif %}
+                                {% if study.tag_simulation %}
+                                <li>
+                                    <a class="tag" href="{{ url_for('get_services') }}" id="simulation">Simulation;</a>
+                                </li>
+                                {% endif %}
+                                {% if study.tag_consultancy %}
+                                <li>
+                                    <a class="tag" href="{{ url_for('get_services') }}" id="consultancy">Consultancy;</a>
+                                </li>
+                                {% endif %}
                             </ul>
-                            <div class="date">06 January 2024</div>
+                            <div class="date">{{study.date}}</div>
                         </div>
                     </div>
-                    <div class="study">
-                        <a href="{{ url_for('get_study') }}"><img src="../static/img/case_study.jpg" alt=""></a>
-                        <div class="text">
-                            <a href="{{ url_for('get_study') }}"><h2 class="title">Case Studie Title Lorem ipsum dolor sit amet.</h2></a>
-                            <ul>
-                                <li>
-                                    <a class="tag" href="{{ url_for('get_services') }}" id="robot">Industrial Robot;</a>
-                                </li>
-                                <li>
-                                    <a class="tag" href="{{ url_for('get_services') }}" id="amr">AMR;</a>
-                                </li>
-                            </ul>
-                            <div class="date">06 January 2024</div>
-                        </div>
-                    </div>
-                    <div class="study">
-                        <a href="{{ url_for('get_study') }}"><img src="../static/img/case_study.jpg" alt=""></a>
-                        <div class="text">
-                            <a href="{{ url_for('get_study') }}"><h2 class="title">Case Studie Title Lorem ipsum dolor sit amet.</h2></a>
-                            <ul>
-                                <li>
-                                    <a class="tag" href="{{ url_for('get_services') }}" id="robot">Industrial Robot;</a>
-                                </li>
-                                <li>
-                                    <a class="tag" href="{{ url_for('get_services') }}" id="amr">AMR;</a>
-                                </li>
-                            </ul>
-                            <div class="date">06 January 2024</div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
                 
          </div>        

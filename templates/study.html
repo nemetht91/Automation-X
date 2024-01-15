@@ -5,28 +5,40 @@
             <div class="title">
                 <div class="text">
                     <div class="line"></div>
-                    <h1>Case Studie Title Lorem ipsum dolor sit amet.</h1>
+                    <h1>{{case_study.title}}</h1>
                 </div>
-                <img src="../static/img/case_study.jpg" alt="">
+                <img src="{{case_study.img_url}}" alt="">
             </div>
             <div class="content">
                 <div class="text">
                     <div class="section">
                         <h2>Objectives</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae sunt, fugiat perferendis commodi vitae labore eius quisquam ex, deleniti blanditiis numquam ducimus nulla, quo architecto laudantium! Quis commodi provident repellat cupiditate, ad nemo nihil nam amet rerum, sed harum hic neque facere nesciunt suscipit. Ducimus veritatis qui maxime aspernatur eos.</p>
+                        <p>{{case_study.objectives}}</p>
                     </div>
                     
                     <div class="section">
                         <h2>Solution</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, mollitia, voluptas cumque minima aliquam excepturi placeat unde commodi facere ea obcaecati quasi repellendus nesciunt nobis accusantium molestias ex expedita deleniti quod minus enim. Exercitationem corrupti, ut incidunt qui numquam aut natus maxime temporibus perspiciatis repellendus sequi, deserunt voluptatum. Consequuntur dolorum quos architecto. Dolorum esse reiciendis exercitationem consequatur optio asperiores officiis!</p>
+                        <p>{{case_study.solution}}</p>
                     </div>
                     
                     <div class="section">
                         <h2>Benefits</h2>
                         <ol>
-                            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur, voluptas!</li>
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium eum repellendus illum.</li>
+                            {% if case_study.benefit1 %}
+                            <li>{{case_study.benefit1}}</li>
+                            {% endif %}
+                            {% if case_study.benefit2 %}
+                            <li>{{case_study.benefit2}}</li>
+                            {% endif %}
+                            {% if case_study.benefit3 %}
+                            <li>{{case_study.benefit3}}</li>
+                            {% endif %}
+                            {% if case_study.benefit4 %}
+                            <li>{{case_study.benefit4}}</li>
+                            {% endif %}
+                            {% if case_study.benefit5 %}
+                            <li>{{case_study.benefit5}}</li>
+                            {% endif %}
                         </ol>
                    </div>
                 </div>
