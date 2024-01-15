@@ -5,38 +5,62 @@
         <div class="main container">
                 <h1>Case Study Editor</h1>
                 <div class="grid">
-                          <form action="{{ url_for('create_case_study') }}" method="post">
+                          <form action="{{ url_for('edit_case_study', case_study_id=case_study.id) }}" method="post">
                             <div>
                                 <h3>Title</h3>
-                                <input type="text" name="title"
-                                placeholder="Title" maxlength="50" required>
+                                <input type="text" name="title" value="{{case_study.title}}"
+                                maxlength="50" required>
                             </div>
                             <div>
                                 <h3>Image URL</h3>
-                                <input type="text" name="image"
-                                placeholder="URL"  required>
+                                <input type="text" name="image" value="{{case_study.img_url}}" required>
                             </div>
                            <div>
                                 <h3>Tags</h3>
                                 <div class="tags">
                                     <div>
-                                        <input type="checkbox" id="robot" name="robot" value="Robot">
-                                        <label for="robot"> Industrial Robot</label><br>
+                                            <input type="checkbox" id="robot" name="robot" value="Robot"
+                                        {% if case_study.tag_robot %}
+
+                                                   checked
+                                        {% endif %}
+                                            >
+                                            <label for="robot"> Industrial Robot</label><br>
                                     </div>
                                     <div>
-                                        <input type="checkbox" id="cobot" name="cobot" value="Cobot">
+                                        <input type="checkbox" id="cobot" name="cobot" value="Cobot"
+                                         {% if case_study.tag_cobot %}
+
+                                                   checked
+                                        {% endif %}
+                                        >
                                         <label for="cobot"> Cobot</label><br>
                                     </div>
                                     <div>
-                                        <input type="checkbox" id="amr" name="amr" value="Amr">
+                                        <input type="checkbox" id="amr" name="amr" value="Amr"
+                                        {% if case_study.tag_amr %}
+
+                                                   checked
+                                        {% endif %}
+                                        >
                                         <label for="amr"> AMR</label>
                                     </div>
                                     <div>
-                                        <input type="checkbox" id="simulation" name="simulation" value="Simulation">
+                                        <input type="checkbox" id="simulation" name="simulation" value="Simulation"
+                                        {% if case_study.tag_simulation %}
+
+                                                   checked
+                                        {% endif %}
+                                        >
                                         <label for="simulation"> Simulation</label>
                                     </div>
                                     <div>
-                                        <input type="checkbox" id="consultancy" name="consultancy" value="Consultancy">
+                                        <input type="checkbox" id="consultancy" name="consultancy" value="Consultancy"
+                                        {% if case_study.tag_consultancy %}
+
+                                                   checked
+                                        {% endif %}
+                                        >
                                         <label for="consultancy"> Consultancy</label>
                                     </div>
                                 </div>
@@ -45,25 +69,25 @@
                            <div>
                                 <h3>Objectives</h3>
                                 <textarea type="text" name="objectives"
-                                placeholder="Objectives" required cols="50" rows="10" ></textarea>
+                                required cols="50" rows="10" >{{case_study.objectives}}</textarea>
                            </div>
                            <div>
                             <h3>Solution</h3>
                             <textarea type="text" name="solution"
-                            placeholder="Solution" required cols="50" rows="10" ></textarea>
+                            required cols="50" rows="10" >{{case_study.solution}}</textarea>
                           </div>
                           <div>
                             <h3>Benefits</h3>
-                            <input type="text" name="benefit1"
-                            placeholder="Benefit 1" maxlength="100" required>
-                            <input type="text" name="benefit2"
-                            placeholder="Benefit 2" maxlength="100" required>
-                            <input type="text" name="benefit3"
-                            placeholder="Benefit 3" maxlength="100" required>
-                            <input type="text" name="benefit4"
-                            placeholder="Benefit 4" maxlength="100" required>
-                            <input type="text" name="benefit5"
-                            placeholder="Benefit 5" maxlength="100" required>
+                            <input type="text" name="benefit1" value="{{case_study.benefit1}}"
+                            maxlength="100" required>
+                            <input type="text" name="benefit2" value="{{case_study.benefit2}}"
+                            maxlength="100">
+                            <input type="text" name="benefit3" value="{{case_study.benefit3}}"
+                            maxlength="100">
+                            <input type="text" name="benefit4" value="{{case_study.benefit4}}"
+                            maxlength="100">
+                            <input type="text" name="benefit5" value="{{case_study.benefit5}}"
+                            maxlength="100">
                        </div>
                             <input type="submit" value="Submit" >
                          </form>
