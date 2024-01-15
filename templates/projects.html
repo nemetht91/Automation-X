@@ -42,6 +42,10 @@
                             </ul>
                             <div class="date">{{study.date}}</div>
                         </div>
+                        <div class="buttons">
+                            <a href="{{ url_for('edit_case_study', case_study_id=study.id) }}" class="btn btn-primary">Edit</a>
+                            <a href="{{ url_for('get_services') }}" class="btn btn-primary">Delete</a>
+                        </div>
                     </div>
                     {% endfor %}
                 </div>

@@ -64,6 +64,34 @@ def get_case_study(case_study_id):
     return render_template("study.html", case_study=case_study)
 
 
+@app.route("/edit/<int:case_study_id>", methods=["GET", "POST"])
+def edit_case_study(case_study_id):
+    with app.app_context():
+        case_study = CaseStudy.query.get(case_study_id)
+        if request.method == "POST":
+            update_case_study(case_study, request.form)
+            db.session.commit()
+            return redirect(url_for("get_case_study", case_study_id=case_study.id))
+        return render_template("study_edit.html", case_study=case_study)
+
+
+def update_case_study(case_study, form):
+    case_study.title = form.get("title")
+    case_study.img_url = form.get("image")
+    case_study.tag_robot = True if form.get("robot") else False
+    case_study.tag_cobot = True if form.get("cobot") else False
+    case_study.tag_amr = True if form.get("amr") else False
+    case_study.tag_simulation = True if form.get("simulation") else False
+    case_study.tag_consultancy = True if form.get("consultancy") else False
+    case_study.date = date.today().strftime("%B %d, %Y")
+    case_study.objectives = form.get("objectives")
+    case_study.solution = form.get("solution")
+    case_study.benefit1 = form.get("benefit1")
+    case_study.benefit2 = form.get("benefit2")
+    case_study.benefit3 = form.get("benefit3")
+    case_study.benefit4 = form.get("benefit4")
+    case_study.benefit5 = form.get("benefit5")
+
 @app.route('/about')
 def get_about():
     return render_template("about.html")
@@ -103,7 +131,7 @@ def create_case_study():
             db.session.add(case_study)
             db.session.commit()
         return redirect(url_for("get_projects"))
-    return render_template("study_edit.html")
+    return render_template("study_create.html")
 
 
 def create_new_case_study(form):
