@@ -593,7 +593,9 @@ footer .copyright{
     margin: 10px 0px;
   }
 
- 
+ .services-portfolio .advantages{
+  margin-bottom: 40px;
+ }
 
   .services-portfolio .advantages h3{
     margin-top: 30px;
@@ -645,10 +647,33 @@ footer .copyright{
 
   p.conclude{
     padding-top: 15px;
+    padding-bottom: 30px;
     font-weight: bold;
     font-size: 1.2rem;
   }
 
+  .services-portfolio .studies{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .services-portfolio .studies .study{
+    border-right: var(--primary-color) solid 2px;
+    padding-right: 20px;
+    padding-top: 0px;
+  }
+
+  .services-portfolio .studies .study h2{
+    padding-bottom: 0px;
+  }
+
+  .services-portfolio .studies .study img
+{
+    width: 100%; 
+    height: 200px; 
+    object-fit: cover;
+  }
 
   /* Feedback */
   .feedback{
@@ -714,11 +739,13 @@ footer .copyright{
     justify-content: center;
   }
 
+  .services-portfolio .studies .study .buttons a,
   .projects .studies .study .buttons a{
     width: 100px;
     text-align: center;
     margin-bottom: 10px;
   }
+
 
   .projects .studies .study img{
     width: 250px; 
@@ -726,16 +753,19 @@ footer .copyright{
     object-fit: cover;
   }
 
+  .services-portfolio .studies .study img:hover,
   .projects .studies .study img:hover{
     transform: scale(1.02);
     transition-duration: 0.2s;
   }
 
+  .services-portfolio .studies .study h2,
   .projects .studies .study h2{
     color: var(--text-color);
     background-color: var(--light-color);
   }
 
+  .services-portfolio .studies .study h2:hover,
   .projects .studies .study h2:hover{
     color: var(--primary-color);
   }
@@ -752,15 +782,18 @@ footer .copyright{
     font-size: 1.1rem;
 }
 
+.services-portfolio .study ul,
 .projects .study ul{
   display: flex;
 }
 
+.services-portfolio .study ul li a,
 .projects .study ul li a{
   padding-right: 5px;
   color: var(--text-color);
 }
 
+.services-portfolio .study ul li a:hover,
 .projects .study ul li a:hover{
   color: var(--primary-color);
 }
@@ -1020,6 +1053,16 @@ footer .copyright{
       height: fit-content;
     }
 
+    .services-portfolio .studies{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+
+    .services-portfolio .studies> div:nth-child(3){
+      display: none;
+    }
+
     p.conclude{
       padding-top: 15px;
       font-weight: bold;
@@ -1131,7 +1174,15 @@ footer .copyright{
       }
 
    
+      .services-portfolio .studies{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 40px;
+      }
 
+      .services-portfolio .studies> div:nth-child(2){
+        display: none;
+      }
 
     
       .feedback{

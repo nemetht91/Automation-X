@@ -99,6 +99,24 @@
                     </li>
                 </ol>
             </div>
+            
+            {% if case_studies["robot_studies"] %}
+                <h2>Case Studies</h2>
+            <div class="studies">
+                
+                {% for study in case_studies["robot_studies"] %}
+                <div class="study">
+                    <a href="{{ url_for('get_case_study', case_study_id=study.id) }}"><img src={{study.img_url}} alt=""></a>
+                    <div class="text">
+                        <a href="{{ url_for('get_case_study', case_study_id=study.id) }}"><h2>{{study.title}}.</h2></a>
+                       
+                        <div class="date">{{study.date}}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+           
         </div>
         <div class="content cobot hidden">
             <h2>Collaborative Robots (Cobots)</h2>
@@ -162,7 +180,22 @@
                     </li>
                 </ol>
             </div>
-
+            {% if case_studies["cobot_studies"] %}
+                <h2>Case Studies</h2>
+            <div class="studies">
+                
+                {% for study in case_studies["cobot_studies"] %}
+                <div class="study">
+                    <a href="{{ url_for('get_case_study', case_study_id=study.id) }}"><img src={{study.img_url}} alt=""></a>
+                    <div class="text">
+                        <a href="{{ url_for('get_case_study', case_study_id=study.id) }}"><h2>{{study.title}}.</h2></a>
+                       
+                        <div class="date">{{study.date}}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
         </div>
         <div class="content amr hidden">
             <h2>Autonomous Robots</h2>
@@ -222,6 +255,22 @@
                     </li>
                 </ol>
             </div>
+            {% if case_studies["amr_studies"] %}
+                <h2>Case Studies</h2>
+            <div class="studies">
+                
+                {% for study in case_studies["amr_studies"] %}
+                <div class="study">
+                    <a href="{{ url_for('get_case_study', case_study_id=study.id) }}"><img src={{study.img_url}} alt=""></a>
+                    <div class="text">
+                        <a href="{{ url_for('get_case_study', case_study_id=study.id) }}"><h2>{{study.title}}.</h2></a>
+                       
+                        <div class="date">{{study.date}}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
         </div>
         <div class="content simulation hidden">
             <h2>Simulation</h2>
@@ -283,6 +332,23 @@
                 </ol>
             </div>
             <p class="conclude">Collaborating with Automation X on simulation not only allows for a smoother transition to real-world implementation but also ensures that the chosen simulation tools align seamlessly with your unique automation goals.</p>
+
+            {% if case_studies["sim_studies"] %}
+                <h2>Case Studies</h2>
+            <div class="studies">
+                
+                {% for study in case_studies["sim_studies"] %}
+                <div class="study">
+                    <a href="{{ url_for('get_case_study', case_study_id=study.id) }}"><img src={{study.img_url}} alt=""></a>
+                    <div class="text">
+                        <a href="{{ url_for('get_case_study', case_study_id=study.id) }}"><h2>{{study.title}}.</h2></a>
+                       
+                        <div class="date">{{study.date}}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
         </div>
         <div class="content consultancy hidden">
             <h2>Consultancy</h2>
@@ -358,6 +424,23 @@
                 </ol>
             </div>
             <p class="conclude">Choosing Automation X as your external consultancy partner ensures that you not only tap into these advantages but also benefit from our platform-independent approach and commitment to tailoring solutions to meet your unique automation needs.</p>
+
+            {% if case_studies["cons_studies"] %}
+                <h2>Case Studies</h2>
+            <div class="studies">
+                
+                {% for study in case_studies["cons_studies"] %}
+                <div class="study">
+                    <a href="{{ url_for('get_case_study', case_study_id=study.id) }}"><img src={{study.img_url}} alt=""></a>
+                    <div class="text">
+                        <a href="{{ url_for('get_case_study', case_study_id=study.id) }}"><h2>{{study.title}}.</h2></a>
+                       
+                        <div class="date">{{study.date}}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
         </div>
     </div>
   </section>

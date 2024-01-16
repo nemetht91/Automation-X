@@ -6,6 +6,7 @@ from datetime import datetime, date
 import sqlalchemy.exc
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
+from sqlalchemy import desc
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = environ.get("SECRET_KEY")
@@ -49,12 +50,43 @@ def get_home():
 
 @app.route('/services')
 def get_services():
-    return render_template("services.html")
+    case_studies = CaseStudy.query.order_by(desc(CaseStudy.id)).all()
+    sorted_case_studies = sort_case_studies(case_studies)
+    return render_template("services.html", case_studies=sorted_case_studies)
+
+
+def sort_case_studies(case_studies: [CaseStudy]):
+    sorted = {}
+
+    robot_studies = [case_study for case_study in case_studies if case_study.tag_robot]
+    robot_studies = robot_studies[0:3]
+    sorted["robot_studies"] = robot_studies
+
+    cobot_studies = [case_study for case_study in case_studies if case_study.tag_cobot]
+    cobot_studies = cobot_studies[0:3]
+    sorted["cobot_studies"] = cobot_studies
+
+    amr_studies = [case_study for case_study in case_studies if case_study.tag_amr]
+    amr_studies = amr_studies[0:3]
+    sorted["amr_studies"] = amr_studies
+
+    sim_studies = [case_study for case_study in case_studies if case_study.tag_simulation]
+    sim_studies = sim_studies[0:3]
+    sorted["sim_studies"] = sim_studies
+
+    cons_studies = [case_study for case_study in case_studies if case_study.tag_consultancy]
+    cons_studies = cons_studies[0:3]
+    sorted["cons_studies"] = cons_studies
+
+    return sorted
+
+
+
 
 
 @app.route('/projects')
 def get_projects():
-    case_studies = CaseStudy.query.all()
+    case_studies = CaseStudy.query.order_by(desc(CaseStudy.id)).all()
     return render_template("projects.html", case_studies=case_studies)
 
 
