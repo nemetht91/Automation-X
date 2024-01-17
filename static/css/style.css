@@ -349,7 +349,8 @@ footer .copyright{
 .success,
 .failed,
 .study,
-.editor{
+.editor,
+.delete{
     max-width: 100%;
     padding-top: 60PX;
     background-color: var(--light-color);
@@ -658,6 +659,7 @@ footer .copyright{
     gap: 40px;
   }
 
+  
   .services-portfolio .studies .study{
     border-right: var(--primary-color) solid 2px;
     padding-right: 20px;
@@ -666,6 +668,14 @@ footer .copyright{
 
   .services-portfolio .studies .study h2{
     padding-bottom: 0px;
+  }
+
+  .services-portfolio a{
+    color: var(--text-color);
+  }
+
+  .services-portfolio a:hover{
+    color: var(--primary-color);
   }
 
   .services-portfolio .studies .study img
@@ -719,9 +729,14 @@ footer .copyright{
     padding: 0;
 }
 
+  .projects .create{
+    margin: 20px;
+  }
+
   .projects .studies{
     margin: 20px;
   }
+
 
   .projects .studies .study{
     display: grid;
@@ -821,6 +836,8 @@ footer .copyright{
 
   .study .title img{
     width: 50%;
+    height: 400px;
+    object-fit: cover;
   }
 
   .study .content{
@@ -878,6 +895,22 @@ footer .copyright{
   width: 20px;
   margin: 20px 40px;
   margin-right: 0px;
+}
+
+/* Delete */
+.delete h1{
+  margin: 0px;
+  margin-top: 40px;
+}
+
+.delete .study{
+  margin: 40px;
+  padding: 0px;
+}
+
+.delete .study h2{
+  color: var(--text-color);
+  background-color: transparent;
 }
 
 /* Editor */
@@ -1076,6 +1109,10 @@ footer .copyright{
     .study .title h1{
       font-size: 1.5rem;
       padding-top: 20px;
+    }
+
+    .study .title img{
+      height: 300px;
     }
 
     .study .title .line{

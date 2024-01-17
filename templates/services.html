@@ -101,7 +101,7 @@
             </div>
             
             {% if case_studies["robot_studies"] %}
-                <h2>Case Studies</h2>
+                <a href="{{ url_for('get_projects') }}"><h2>Case Studies</h2></a>
             <div class="studies">
                 
                 {% for study in case_studies["robot_studies"] %}
@@ -181,7 +181,7 @@
                 </ol>
             </div>
             {% if case_studies["cobot_studies"] %}
-                <h2>Case Studies</h2>
+                <a href="{{ url_for('get_projects') }}"><h2>Case Studies</h2></a>
             <div class="studies">
                 
                 {% for study in case_studies["cobot_studies"] %}
@@ -256,7 +256,7 @@
                 </ol>
             </div>
             {% if case_studies["amr_studies"] %}
-                <h2>Case Studies</h2>
+                <a href="{{ url_for('get_projects') }}"><h2>Case Studies</h2></a>
             <div class="studies">
                 
                 {% for study in case_studies["amr_studies"] %}
@@ -334,7 +334,7 @@
             <p class="conclude">Collaborating with Automation X on simulation not only allows for a smoother transition to real-world implementation but also ensures that the chosen simulation tools align seamlessly with your unique automation goals.</p>
 
             {% if case_studies["sim_studies"] %}
-                <h2>Case Studies</h2>
+                <a href="{{ url_for('get_projects') }}"><h2>Case Studies</h2></a>
             <div class="studies">
                 
                 {% for study in case_studies["sim_studies"] %}
@@ -426,7 +426,7 @@
             <p class="conclude">Choosing Automation X as your external consultancy partner ensures that you not only tap into these advantages but also benefit from our platform-independent approach and commitment to tailoring solutions to meet your unique automation needs.</p>
 
             {% if case_studies["cons_studies"] %}
-                <h2>Case Studies</h2>
+                <a href="{{ url_for('get_projects') }}"><h2>Case Studies</h2></a>
             <div class="studies">
                 
                 {% for study in case_studies["cons_studies"] %}

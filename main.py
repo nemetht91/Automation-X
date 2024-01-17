@@ -7,6 +7,7 @@ import sqlalchemy.exc
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
 from sqlalchemy import desc
+from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = environ.get("SECRET_KEY")
@@ -79,9 +80,6 @@ def sort_case_studies(case_studies: [CaseStudy]):
     sorted["cons_studies"] = cons_studies
 
     return sorted
-
-
-
 
 
 @app.route('/projects')
@@ -184,6 +182,21 @@ def create_new_case_study(form):
         benefit4=form.get("benefit4"),
         benefit5=form.get("benefit5")
     )
+
+
+@app.route("/delete_confirm/<int:case_study_id>")
+def get_delete(case_study_id):
+    case_study = CaseStudy.query.get(case_study_id)
+    return render_template("delete.html", case_study=case_study)
+
+
+@app.route("/delete/<int:case_study_id>")
+def delete_case_study(case_study_id):
+    with app.app_context():
+        case_study = CaseStudy.query.get(case_study_id)
+        db.session.delete(case_study)
+        db.session.commit()
+    return redirect(url_for("get_projects"))
 
 
 @app.context_processor

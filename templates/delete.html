@@ -1,0 +1,21 @@
+{% include "header.html" %}
+
+     <section class="delete">
+        <div class="main container">
+                <h1>Are you sure to delete the case study below?</h1>
+                    <div class="study">
+                        <img src={{case_study.img_url}} alt="">
+                        <div class="text">
+                            <h2>{{case_study.title}}.</h2>
+                            <div class="date">{{case_study.date}}</div>
+                        </div>
+                        <div class="buttons">
+                            <a href="{{ url_for('get_projects') }}" class="btn btn-primary">Cancel</a>
+                            <a href="{{ url_for('delete_case_study', case_study_id=case_study.id) }}" class="btn btn-primary">Delete</a>
+                        </div>
+                </div>
+                
+         </div>        
+     </section>
+    
+ {% include "footer.html" %}

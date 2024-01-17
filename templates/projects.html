@@ -7,6 +7,9 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae asperiores repudiandae labore. Fugiat minus, veritatis laudantium recusandae alias nisi officiis vero ex dolorum ratione iusto iste numquam, repellendus, ad cumque!
                     </p>
                 </div>
+                <div class="create">
+                    <a href="{{ url_for('create_case_study') }}" class="btn btn-primary">Create New</a>
+                </div>
                 <div class="studies">
                     {% for study in case_studies %}
                     <div class="study">
@@ -44,7 +47,7 @@
                         </div>
                         <div class="buttons">
                             <a href="{{ url_for('edit_case_study', case_study_id=study.id) }}" class="btn btn-primary">Edit</a>
-                            <a href="{{ url_for('get_services') }}" class="btn btn-primary">Delete</a>
+                            <a href="{{ url_for('get_delete', case_study_id=study.id) }}" class="btn btn-primary">Delete</a>
                         </div>
                     </div>
                     {% endfor %}
