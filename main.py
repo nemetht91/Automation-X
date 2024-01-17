@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, flash, abort
 from os import environ
 from forms import *
 from notifier_manager import NotifierManger
@@ -9,7 +9,7 @@ from sqlalchemy.orm import relationship
 from sqlalchemy import desc
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
-
+from settings import ADMIN_USERNAME, ADMIN_PASSWORD
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = environ.get("SECRET_KEY")
@@ -18,6 +18,10 @@ app.config['SECRET_KEY'] = environ.get("SECRET_KEY")
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///automationxdb'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+
+# Configure login manager
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 ##CONFIGURE TABLES
 
@@ -42,8 +46,33 @@ class CaseStudy(db.Model):
     benefit5 = db.Column(db.String(250), nullable=True)
 
 
+class User(UserMixin, db.Model):
+    __tablename__ = "users"
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(250), unique=True, nullable=False)
+    password = db.Column(db.String(250), nullable=False)
+
+
 with app.app_context():
     db.create_all()
+
+
+def create_admin_user():
+    with app.app_context():
+        admin = User.query.get(1)
+        if not admin:
+            try:
+                admin = User(
+                    username=ADMIN_USERNAME,
+                    password=ADMIN_PASSWORD
+                )
+                db.session.add(admin)
+                db.session.commit()
+            except sqlalchemy.exc.IntegrityError:
+                return None
+
+
+create_admin_user()
 
 
 @app.route('/')
@@ -96,34 +125,6 @@ def get_case_study(case_study_id):
     return render_template("study.html", case_study=case_study)
 
 
-@app.route("/edit/<int:case_study_id>", methods=["GET", "POST"])
-def edit_case_study(case_study_id):
-    with app.app_context():
-        case_study = CaseStudy.query.get(case_study_id)
-        if request.method == "POST":
-            update_case_study(case_study, request.form)
-            db.session.commit()
-            return redirect(url_for("get_case_study", case_study_id=case_study.id))
-        return render_template("study_edit.html", case_study=case_study)
-
-
-def update_case_study(case_study, form):
-    case_study.title = form.get("title")
-    case_study.img_url = form.get("image")
-    case_study.tag_robot = True if form.get("robot") else False
-    case_study.tag_cobot = True if form.get("cobot") else False
-    case_study.tag_amr = True if form.get("amr") else False
-    case_study.tag_simulation = True if form.get("simulation") else False
-    case_study.tag_consultancy = True if form.get("consultancy") else False
-    case_study.date = date.today().strftime("%B %d, %Y")
-    case_study.objectives = form.get("objectives")
-    case_study.solution = form.get("solution")
-    case_study.benefit1 = form.get("benefit1")
-    case_study.benefit2 = form.get("benefit2")
-    case_study.benefit3 = form.get("benefit3")
-    case_study.benefit4 = form.get("benefit4")
-    case_study.benefit5 = form.get("benefit5")
-
 @app.route('/about')
 def get_about():
     return render_template("about.html")
@@ -155,7 +156,38 @@ def get_failed():
     return render_template("failed.html")
 
 
+@app.route("/edit/<int:case_study_id>", methods=["GET", "POST"])
+@login_required
+def edit_case_study(case_study_id):
+    with app.app_context():
+        case_study = CaseStudy.query.get(case_study_id)
+        if request.method == "POST":
+            update_case_study(case_study, request.form)
+            db.session.commit()
+            return redirect(url_for("get_case_study", case_study_id=case_study.id))
+        return render_template("study_edit.html", case_study=case_study)
+
+
+def update_case_study(case_study, form):
+    case_study.title = form.get("title")
+    case_study.img_url = form.get("image")
+    case_study.tag_robot = True if form.get("robot") else False
+    case_study.tag_cobot = True if form.get("cobot") else False
+    case_study.tag_amr = True if form.get("amr") else False
+    case_study.tag_simulation = True if form.get("simulation") else False
+    case_study.tag_consultancy = True if form.get("consultancy") else False
+    case_study.date = date.today().strftime("%B %d, %Y")
+    case_study.objectives = form.get("objectives")
+    case_study.solution = form.get("solution")
+    case_study.benefit1 = form.get("benefit1")
+    case_study.benefit2 = form.get("benefit2")
+    case_study.benefit3 = form.get("benefit3")
+    case_study.benefit4 = form.get("benefit4")
+    case_study.benefit5 = form.get("benefit5")
+
+
 @app.route('/create', methods=["GET", "POST"])
+@login_required
 def create_case_study():
     if request.method == "POST":
         with app.app_context():
@@ -187,12 +219,14 @@ def create_new_case_study(form):
 
 
 @app.route("/delete_confirm/<int:case_study_id>")
+@login_required
 def get_delete(case_study_id):
     case_study = CaseStudy.query.get(case_study_id)
     return render_template("delete.html", case_study=case_study)
 
 
 @app.route("/delete/<int:case_study_id>")
+@login_required
 def delete_case_study(case_study_id):
     with app.app_context():
         case_study = CaseStudy.query.get(case_study_id)
@@ -204,8 +238,34 @@ def delete_case_study(case_study_id):
 @app.route('/3f93aa183e12loginc25f80099189', methods=["GET", "POST"])
 def get_login():
     if request.method == "POST":
-        ...
+        username = request.form.get("username")
+        password = request.form.get("password")
+        if login(username, password):
+            flash("Incorrect username or password", "error")
+            return redirect(url_for("get_projects"))
     return render_template("login.html")
+
+
+def login(username, password):
+    with app.app_context():
+        user = User.query.filter_by(username=username).first()
+        if user is None:
+            return False
+        if check_password_hash(user.password, password):
+            login_user(user)
+            return True
+        return False
+
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('get_projects'))
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
 
 
 @app.context_processor

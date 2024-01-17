@@ -13,3 +13,7 @@ MAILTRAP_NO_REPLY_UUID = environ.get("MAILTRAP_NO_REPLY_UUID")
 
 # Enquiry handler
 ENQUIRY_RECEIVER = environ.get("ENQUIRY_RECEIVER")
+
+# Admin user
+ADMIN_USERNAME = environ.get("ADMIN_USERNAME")
+ADMIN_PASSWORD = environ.get("ADMIN_PASSWORD")
