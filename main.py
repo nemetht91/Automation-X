@@ -8,6 +8,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
 from sqlalchemy import desc
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = environ.get("SECRET_KEY")
@@ -197,6 +199,13 @@ def delete_case_study(case_study_id):
         db.session.delete(case_study)
         db.session.commit()
     return redirect(url_for("get_projects"))
+
+
+@app.route('/3f93aa183e12loginc25f80099189', methods=["GET", "POST"])
+def get_login():
+    if request.method == "POST":
+        ...
+    return render_template("login.html")
 
 
 @app.context_processor

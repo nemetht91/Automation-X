@@ -39,6 +39,23 @@ a:hover{
     display: none;
 }
 
+.contact,
+.projects,
+.about,
+.privacy,
+.success,
+.failed,
+.study,
+.editor,
+.delete,
+.login{
+    max-width: 100%;
+    padding-top: 60PX;
+    background-color: var(--light-color);
+    color: var(--text-color);
+}
+
+
 /* Navigation */
 
 .navbar{
@@ -341,21 +358,6 @@ footer .copyright{
 }
 
 /* Contact */
-
-.contact,
-.projects,
-.about,
-.privacy,
-.success,
-.failed,
-.study,
-.editor,
-.delete{
-    max-width: 100%;
-    padding-top: 60PX;
-    background-color: var(--light-color);
-    color: var(--text-color);
-}
 
 .contact .main .container{
     gap: 100px;
@@ -953,10 +955,26 @@ footer .copyright{
     width: 100%;
     font-size: 1.1rem;
     margin: 10px 0px;
+    margin-left: 10px;
+    padding: 5px;
   }
 
 .editor form input[type="submit"]:hover{
     cursor: pointer;
+  }
+
+  /* Login */
+  .login form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 40px 10px;
+    max-width: 300px;
+  }
+
+  .login input{
+    font-size: 1rem;
+    padding: 5px;
   }
 
   @media(max-width: 1200px){
