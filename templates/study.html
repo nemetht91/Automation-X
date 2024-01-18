@@ -41,6 +41,12 @@
                             {% endif %}
                         </ol>
                    </div>
+                   {% if current_user.is_authenticated %}
+                    <div class="buttons">
+                        <a href="{{ url_for('edit_case_study', case_study_id=case_study.id) }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ url_for('get_delete', case_study_id=case_study.id) }}" class="btn btn-primary">Delete</a>
+                    </div>
+                    {% endif %}
                 </div>
                 <div class="style">
                     <div class="line line1"></div>

@@ -899,6 +899,10 @@ footer .copyright{
   margin-right: 0px;
 }
 
+.study .buttons{
+  margin-bottom: 40px;
+}
+
 /* Delete */
 .delete h1{
   margin: 0px;

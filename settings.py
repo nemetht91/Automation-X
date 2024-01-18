@@ -17,3 +17,9 @@ ENQUIRY_RECEIVER = environ.get("ENQUIRY_RECEIVER")
 # Admin user
 ADMIN_USERNAME = environ.get("ADMIN_USERNAME")
 ADMIN_PASSWORD = environ.get("ADMIN_PASSWORD")
+
+# Database connection
+DATABASE_STRING = environ.get("DATABASE_STRING")
+
+
+

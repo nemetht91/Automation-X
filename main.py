@@ -9,13 +9,15 @@ from sqlalchemy.orm import relationship
 from sqlalchemy import desc
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
-from settings import ADMIN_USERNAME, ADMIN_PASSWORD
+from settings import *
+import urllib
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = environ.get("SECRET_KEY")
 
 ##CONNECT TO DB
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///automationxdb'
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_STRING
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 

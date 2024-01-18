@@ -25,6 +25,9 @@
                     <li><a href="{{ url_for('get_projects') }}">Case Studies</a></li>
                     <li><a href="{{ url_for('get_about') }}">About Us</a></li>
                     <li><a href="{{ url_for('get_contact') }}">Contact Us</a></li>
+                    {% if current_user.is_authenticated %}
+                        <li><a href="{{ url_for('logout') }}">Log out</a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </div>
@@ -37,6 +40,9 @@
                     <li><a href="{{ url_for('get_about') }}">About Us</a></li>
                     <li><a href="{{ url_for('get_contact') }}">Contact Us</a></li>
                     <li><a href="{{ url_for('get_privacy') }}">Privacy Policy</li>
+                    {% if current_user.is_authenticated %}
+                        <li><a href="{{ url_for('logout') }}">Log out</a></li>
+                    {% endif %}
                 </ul>
             </form>
             <div class="social-bar">
