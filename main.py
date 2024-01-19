@@ -16,6 +16,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = environ.get("SECRET_KEY")
 
 ##CONNECT TO DB
+engine = sqlalchemy.create_engine(DATABASE_STRING, pool_pre_ping=True)
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_STRING
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
