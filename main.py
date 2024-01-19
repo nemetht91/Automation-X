@@ -69,7 +69,6 @@ with app.app_context():
 
 
 def create_admin_user():
-    db.engine.dispose()
     with app.app_context():
         admin = User.query.get(1)
         if not admin:
@@ -80,6 +79,8 @@ def create_admin_user():
                 )
                 db.session.add(admin)
                 db.session.commit()
+                db.session.remove()
+                db.engine.dispose()
             except sqlalchemy.exc.IntegrityError:
                 return None
 
@@ -94,8 +95,9 @@ def get_home():
 
 @app.route('/services')
 def get_services():
-    db.engine.dispose()
     case_studies = CaseStudy.query.order_by(desc(CaseStudy.id)).all()
+    db.session.remove()
+    db.engine.dispose()
     sorted_case_studies = sort_case_studies(case_studies)
     return render_template("services.html", case_studies=sorted_case_studies)
 
