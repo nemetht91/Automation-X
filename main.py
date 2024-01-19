@@ -58,7 +58,13 @@ class User(UserMixin, db.Model):
 
 
 with app.app_context():
+    #print('sqlalchemy engine:', db.engine)
     db.create_all()
+    db.session.commit()
+
+    # close the sql pool connections so that new forks create their own connection.
+    db.session.remove()
+    db.engine.dispose()
 
 
 def create_admin_user():
