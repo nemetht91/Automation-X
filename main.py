@@ -12,6 +12,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from settings import *
 import urllib
 
+db = SQLAlchemy()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = environ.get("SECRET_KEY")
 
@@ -68,6 +69,7 @@ with app.app_context():
 
 
 def create_admin_user():
+    db.engine.dispose()
     with app.app_context():
         admin = User.query.get(1)
         if not admin:
@@ -92,6 +94,7 @@ def get_home():
 
 @app.route('/services')
 def get_services():
+    db.engine.dispose()
     case_studies = CaseStudy.query.order_by(desc(CaseStudy.id)).all()
     sorted_case_studies = sort_case_studies(case_studies)
     return render_template("services.html", case_studies=sorted_case_studies)
@@ -125,12 +128,14 @@ def sort_case_studies(case_studies: [CaseStudy]):
 
 @app.route('/projects')
 def get_projects():
+    db.engine.dispose()
     case_studies = CaseStudy.query.order_by(desc(CaseStudy.id)).all()
     return render_template("projects.html", case_studies=case_studies)
 
 
 @app.route("/casestudy/<int:case_study_id>")
 def get_case_study(case_study_id):
+    db.engine.dispose()
     case_study = CaseStudy.query.get(case_study_id)
     return render_template("study.html", case_study=case_study)
 
@@ -169,6 +174,7 @@ def get_failed():
 @app.route("/edit/<int:case_study_id>", methods=["GET", "POST"])
 @login_required
 def edit_case_study(case_study_id):
+    db.engine.dispose()
     with app.app_context():
         case_study = CaseStudy.query.get(case_study_id)
         if request.method == "POST":
@@ -200,6 +206,7 @@ def update_case_study(case_study, form):
 @login_required
 def create_case_study():
     if request.method == "POST":
+        db.engine.dispose()
         with app.app_context():
             case_study = create_new_case_study(request.form)
             db.session.add(case_study)
@@ -231,6 +238,7 @@ def create_new_case_study(form):
 @app.route("/delete_confirm/<int:case_study_id>")
 @login_required
 def get_delete(case_study_id):
+    db.engine.dispose()
     case_study = CaseStudy.query.get(case_study_id)
     return render_template("delete.html", case_study=case_study)
 
@@ -238,6 +246,7 @@ def get_delete(case_study_id):
 @app.route("/delete/<int:case_study_id>")
 @login_required
 def delete_case_study(case_study_id):
+    db.engine.dispose()
     with app.app_context():
         case_study = CaseStudy.query.get(case_study_id)
         db.session.delete(case_study)
@@ -257,6 +266,7 @@ def get_login():
 
 
 def login(username, password):
+    db.engine.dispose()
     with app.app_context():
         user = User.query.filter_by(username=username).first()
         if user is None:
