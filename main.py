@@ -21,6 +21,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_STRING
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+engine.dispose()
 
 # Configure login manager
 login_manager = LoginManager()
@@ -287,5 +288,4 @@ def process_form(form: ContactForm):
 
 
 if __name__ == "__main__":
-    engine.dispose()
-    app.run(debug=True)
+    app.run(debug=False)
