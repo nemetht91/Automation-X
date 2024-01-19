@@ -287,4 +287,5 @@ def process_form(form: ContactForm):
 
 
 if __name__ == "__main__":
+    engine.dispose()
     app.run(debug=True)
