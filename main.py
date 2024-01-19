@@ -14,7 +14,7 @@ import urllib
 
 db = SQLAlchemy()
 app = Flask(__name__)
-app.config['SECRET_KEY'] = environ.get("SECRET_KEY")
+app.secret_key = environ.get("SECRET_KEY")
 
 ##CONNECT TO DB
 engine = sqlalchemy.create_engine(DATABASE_STRING, pool_pre_ping=True, pool_size=10, max_overflow=20)
