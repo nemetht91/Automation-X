@@ -203,7 +203,7 @@ def update_case_study(case_study, form):
     case_study.tag_amr = True if form.get("amr") else False
     case_study.tag_simulation = True if form.get("simulation") else False
     case_study.tag_consultancy = True if form.get("consultancy") else False
-    case_study.date = date.today().strftime("%B %d, %Y")
+    case_study.date = date.today().strftime("%d %B %Y")
     case_study.objectives = form.get("objectives")
     case_study.solution = form.get("solution")
     case_study.benefit1 = form.get("benefit1")
