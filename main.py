@@ -18,7 +18,15 @@ app.secret_key = environ.get("SECRET_KEY")
 app.config['SESSION_TYPE'] = 'filesystem'
 
 ##CONNECT TO DB
-engine = sqlalchemy.create_engine(DATABASE_STRING, pool_pre_ping=True, pool_size=10, max_overflow=20)
+engine = sqlalchemy.create_engine(DATABASE_STRING, pool_pre_ping=True, pool_size=10, max_overflow=20,
+                                  connect_args={
+                                      "keepalives": 1,
+                                      "keepalives_idle": 30,
+                                      "keepalives_interval": 10,
+                                      "keepalives_count": 5,
+                                  }
+                                  )
+
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_STRING
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
