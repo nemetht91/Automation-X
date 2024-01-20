@@ -17,7 +17,7 @@
                     <div class="study">
                         <a href="{{ url_for('get_case_study', case_study_id=study.id) }}"><img src={{study.img_url}} alt=""></a>
                         <div class="text">
-                            <a href="{{ url_for('get_case_study', case_study_id=study.id) }}"><h2 class="title">{{study.title}}.</h2></a>
+                            <a href="{{ url_for('get_case_study', case_study_id=study.id) }}"><h2 class="title">{{study.title}}</h2></a>
                             <ul>
                                 {% if study.tag_robot %}
                                 <li>
