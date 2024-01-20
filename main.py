@@ -271,8 +271,8 @@ def get_login():
         username = request.form.get("username")
         password = request.form.get("password")
         if login(username, password):
-            flash("Incorrect username or password", "error")
             return redirect(url_for("get_projects"))
+        flash("Incorrect username or password", "error")
     return render_template("login.html")
 
 

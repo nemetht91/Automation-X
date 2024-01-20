@@ -914,6 +914,10 @@ footer .copyright{
   padding: 0px;
 }
 
+.delete .study img{
+  max-width: 300px;
+}
+
 .delete .study h2{
   color: var(--text-color);
   background-color: transparent;
@@ -979,6 +983,10 @@ footer .copyright{
   .login input{
     font-size: 1rem;
     padding: 5px;
+  }
+
+  .error_msg{
+    color: red;
   }
 
   @media(max-width: 1200px){
