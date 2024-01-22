@@ -749,6 +749,8 @@ footer .copyright{
     border-bottom: var(--primary-color) solid 1px;
   }
 
+
+
   .projects .studies .study .buttons{
     display: flex;
     flex-direction: column;
@@ -813,6 +815,22 @@ footer .copyright{
 .services-portfolio .study ul li a:hover,
 .projects .study ul li a:hover{
   color: var(--primary-color);
+}
+
+
+#case-study-load{
+  display: block;
+  margin: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.projects .studies .hidden{
+  display: none;
+}
+
+.projects .hidden{
+  visibility: hidden;
 }
 
   /* Case Study */
@@ -1282,6 +1300,10 @@ footer .copyright{
     
       .projects .studies{
         margin: 20px 0px;
+      }
+
+      .projects .studies .hidden{
+        display: none;
       }
 
 

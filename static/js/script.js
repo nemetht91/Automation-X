@@ -122,3 +122,50 @@ flipCards.forEach((flipCard) => {
     flipCard.classList.remove('touch-hover-effect');
   });
 });
+
+
+
+/* Case studies load more */
+const caseStudies = document.querySelectorAll('.projects .studies .study');
+const loadMore = document.querySelector('#case-study-load');
+const startingCaseStudies = 2;
+
+window.addEventListener("load", event =>{
+    if(window.location.href.match('projects.html') != null || window.location.href.match('projects') != null){
+        localStorage.setItem("numberOfCaseStudies", JSON.stringify(startingCaseStudies));
+        showCaseStudies();
+        setLoadMoreVisibility();
+    }
+});
+
+function showCaseStudies(){
+    var numberOfCaseStudies = JSON.parse(localStorage.getItem("numberOfCaseStudies"));
+    for (var i = 0; i < numberOfCaseStudies; i++){
+        showCaseStudy(i);
+    }
+}
+
+function showCaseStudy(studyId){
+    if (studyId >= caseStudies.length){
+        return;
+    }
+    caseStudies[studyId].classList.remove("hidden");
+}
+
+function setLoadMoreVisibility(){
+    var numberOfCaseStudies = JSON.parse(localStorage.getItem("numberOfCaseStudies"));
+    if (numberOfCaseStudies >= caseStudies.length){
+        loadMore.classList.add("hidden");
+    }
+}
+
+loadMore.addEventListener("click", event =>{
+    incrementCaseStudyCount();
+    showCaseStudies();
+    setLoadMoreVisibility();
+});
+
+function incrementCaseStudyCount(){
+    var numberOfCaseStudies = JSON.parse(localStorage.getItem("numberOfCaseStudies")) + startingCaseStudies;
+    localStorage.setItem("numberOfCaseStudies", JSON.stringify(numberOfCaseStudies));
+}

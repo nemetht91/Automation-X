@@ -14,10 +14,10 @@
                 {% endif %}
                 <div class="studies">
                     {% for study in case_studies %}
-                    <div class="study">
+                    <div class="study hidden">
                         <a href="{{ url_for('get_case_study', case_study_id=study.id) }}"><img src={{study.img_url}} alt=""></a>
                         <div class="text">
-                            <a href="{{ url_for('get_case_study', case_study_id=study.id) }}"><h2 class="title">{{study.title}}</h2></a>
+                            <a href="{{ url_for('get_case_study', case_study_id=study.id) }}"><h2>{{study.title}}</h2></a>
                             <ul>
                                 {% if study.tag_robot %}
                                 <li>
@@ -56,7 +56,7 @@
                     </div>
                     {% endfor %}
                 </div>
-                
+                <button class="btn btn-primary" id="case-study-load">Load more</button>
          </div>        
      </section>
     
