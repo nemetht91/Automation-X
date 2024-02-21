@@ -44,7 +44,7 @@ class CaseStudy(db.Model):
     __tablename__ = "case_studies"
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(250), unique=True, nullable=False)
-    img_url = db.Column(db.String(250), nullable=False)
+    img_url = db.Column(db.Text, nullable=False)
     tag_robot = db.Column(db.Boolean, nullable=True)
     tag_cobot = db.Column(db.Boolean, nullable=True)
     tag_amr = db.Column(db.Boolean, nullable=True)
@@ -53,11 +53,11 @@ class CaseStudy(db.Model):
     date = db.Column(db.String(250), nullable=False)
     objectives = db.Column(db.Text, nullable=False)
     solution = db.Column(db.Text, nullable=False)
-    benefit1 = db.Column(db.String(250), nullable=True)
-    benefit2 = db.Column(db.String(250), nullable=True)
-    benefit3 = db.Column(db.String(250), nullable=True)
-    benefit4 = db.Column(db.String(250), nullable=True)
-    benefit5 = db.Column(db.String(250), nullable=True)
+    benefit1 = db.Column(db.Text, nullable=True)
+    benefit2 = db.Column(db.Text, nullable=True)
+    benefit3 = db.Column(db.Text, nullable=True)
+    benefit4 = db.Column(db.Text, nullable=True)
+    benefit5 = db.Column(db.Text, nullable=True)
 
 
 class User(UserMixin, db.Model):
