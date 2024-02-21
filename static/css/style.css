@@ -366,7 +366,8 @@ footer .copyright{
 }
 
 
-.contact h1{
+.contact h1,
+.about h1{
     margin: 20px 0px;
     font-size: 2rem;
     border-bottom: var(--primary-color) 7px;
@@ -466,6 +467,39 @@ footer .copyright{
 
   .contact .details a:hover{
     color: var(--primary-color);
+  }
+
+  /* About */
+  .about img{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: var(--primary-color) solid 1px;
+  }
+
+  .about h2{
+    font-size: 1.2rem;
+  }
+
+  .about h3{
+    font-size: 1rem;
+    color: var(--primary-color);
+    width: max-content;
+  }
+
+  .about p{
+    margin: 20px 0px;
+    font-size: 1.1rem;
+  }
+
+  .about .intro{
+    display: flex;
+    align-items: center;
+    gap: 100px;
+  }
+
+  .about .profile{
+    text-align: center;
   }
 
   .services-intro{
@@ -1238,6 +1272,12 @@ footer .copyright{
       
       .contact form textarea[name="message"]{
         height: 100px;
+      }
+
+      .about .intro{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
       }
 
       .flip-card{
