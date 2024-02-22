@@ -477,6 +477,7 @@ footer .copyright{
     width: 200px;
     border-radius: 50%;
     border: var(--primary-color) solid 1px;
+    
   }
 
   .about h2{
@@ -497,11 +498,13 @@ footer .copyright{
   .about .intro{
     display: flex;
     align-items: center;
-    gap: 100px;
+    gap: 300px;
   }
 
   .about .profile{
     text-align: center;
+    margin-right: 100px;
+    margin-bottom: 30px;
   }
 
   .services-intro{
@@ -651,18 +654,18 @@ footer .copyright{
 
   .services-portfolio .advantages ol {
     list-style: none;
-    counter-reset: my-awesome-counter;
+    /*counter-reset: my-awesome-counter;*/
   }
 
   .services-portfolio .advantages ol li {
-    counter-increment: my-awesome-counter;
+    /*counter-increment: my-awesome-counter;*/
     display: flex;
     padding: 10px 0px;
   }
 
   .services-portfolio .advantages ol li::before {
-    content: counter(my-awesome-counter) ". ";
-    color: #fff;
+    content: "•";
+    color: var(--primary-color);
     background-color: var(--primary-color);
     display: flex;
     align-items: center;
@@ -1145,6 +1148,14 @@ footer .copyright{
         display: none;
     }
 
+    .about .intro{
+      gap: 100px;
+    }
+  
+    .about .profile{
+      margin-right: 50px;
+    }
+
     .services-navigation .nav button{
         padding: 5px 20px;
     }
@@ -1284,8 +1295,14 @@ footer .copyright{
 
       .about .intro{
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         gap: 30px;
+      }
+
+      .about .profile{
+        margin-right: 0px;
+        margin-bottom: 10px;
+        margin-top: 20px;
       }
 
       .flip-card{
