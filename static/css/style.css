@@ -476,8 +476,7 @@ footer .copyright{
     height: 200px;
     width: 200px;
     border-radius: 50%;
-    border: var(--primary-color) solid 1px;
-    
+    background-color: var(--primary-color);
   }
 
   .about h2{
@@ -485,9 +484,9 @@ footer .copyright{
   }
 
   .about h3{
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: var(--primary-color);
-    width: max-content;
+    text-align: center;
   }
 
   .about p{
@@ -498,12 +497,11 @@ footer .copyright{
   .about .intro{
     display: flex;
     align-items: center;
-    gap: 300px;
+    gap: 100px;
   }
 
   .about .profile{
     text-align: center;
-    margin-right: 100px;
     margin-bottom: 30px;
   }
 
@@ -1149,12 +1147,10 @@ footer .copyright{
     }
 
     .about .intro{
-      gap: 100px;
+      gap: 50px;
     }
   
-    .about .profile{
-      margin-right: 50px;
-    }
+    
 
     .services-navigation .nav button{
         padding: 5px 20px;
@@ -1295,7 +1291,7 @@ footer .copyright{
 
       .about .intro{
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         gap: 30px;
       }
 
