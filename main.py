@@ -1,3 +1,5 @@
+import time
+
 from flask import Flask, render_template, redirect, url_for, request, flash, abort
 from os import environ
 from forms import *
@@ -5,12 +7,11 @@ from notifier_manager import NotifierManger
 from datetime import datetime, date
 import sqlalchemy.exc
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import relationship
 from sqlalchemy import desc
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from settings import *
-import urllib
+import logging
 
 db = SQLAlchemy()
 app = Flask(__name__)
@@ -104,14 +105,59 @@ def get_home():
 
 @app.route('/services')
 def get_services():
-    case_studies = CaseStudy.query.order_by(desc(CaseStudy.id)).all()
-    db.session.remove()
-    db.engine.dispose()
+    case_studies = fetch_case_studies()
     sorted_case_studies = sort_case_studies(case_studies)
     return render_template("services.html", case_studies=sorted_case_studies)
 
 
+def fetch_case_studies():
+    db.session.remove()
+    db.engine.dispose()
+    error_counter = 0
+    case_studies = None
+    while is_keep_going(case_studies, error_counter):
+        try:
+            case_studies = CaseStudy.query.order_by(desc(CaseStudy.id)).all()
+        except sqlalchemy.exc.OperationalError as e:
+            error_counter = error_counter + 1
+            logging.warning("Database Connection error: " + e)
+            db.session.rollback()
+            logging.warning("Attempting to reconnect")
+            time.sleep(1)
+            db.session.begin()
+    return case_studies
+
+
+def fetch_case_study(case_study_id):
+    db.session.remove()
+    db.engine.dispose()
+    error_counter = 0
+    case_study = None
+    while is_keep_going(case_study, error_counter):
+        try:
+            case_study = CaseStudy.query.get(case_study_id)
+        except sqlalchemy.exc.OperationalError as e:
+            error_counter = error_counter + 1
+            logging.warning("Database Connection error: " + e)
+            db.session.rollback()
+            logging.warning("Attempting to reconnect")
+            time.sleep(1)
+            db.session.begin()
+    return case_study
+
+
+def is_keep_going(data, error_counter):
+    if data:
+        return False
+    if error_counter > 1:
+        return False
+    return True
+
+
+
 def sort_case_studies(case_studies: [CaseStudy]):
+    if not case_studies:
+        return []
     sorted = {}
 
     robot_studies = [case_study for case_study in case_studies if case_study.tag_robot]
@@ -139,15 +185,15 @@ def sort_case_studies(case_studies: [CaseStudy]):
 
 @app.route('/projects')
 def get_projects():
-    db.engine.dispose()
-    case_studies = CaseStudy.query.order_by(desc(CaseStudy.id)).all()
+    case_studies = fetch_case_studies()
     return render_template("projects.html", case_studies=case_studies)
 
 
 @app.route("/casestudy/<int:case_study_id>")
 def get_case_study(case_study_id):
-    db.engine.dispose()
-    case_study = CaseStudy.query.get(case_study_id)
+    case_study = fetch_case_study(case_study_id)
+    if not case_study:
+        return redirect(url_for("get_projects"))
     return render_template("study.html", case_study=case_study)
 
 
@@ -185,9 +231,10 @@ def get_failed():
 @app.route("/edit/<int:case_study_id>", methods=["GET", "POST"])
 @login_required
 def edit_case_study(case_study_id):
-    db.engine.dispose()
     with app.app_context():
-        case_study = CaseStudy.query.get(case_study_id)
+        case_study = fetch_case_study(case_study_id)
+        if not case_study:
+            return redirect(url_for("get_projects"))
         if request.method == "POST":
             update_case_study(case_study, request.form)
             db.session.commit()
@@ -249,17 +296,19 @@ def create_new_case_study(form):
 @app.route("/delete_confirm/<int:case_study_id>")
 @login_required
 def get_delete(case_study_id):
-    db.engine.dispose()
-    case_study = CaseStudy.query.get(case_study_id)
+    case_study = fetch_case_study(case_study_id)
+    if not case_study:
+        return redirect(url_for("get_projects"))
     return render_template("delete.html", case_study=case_study)
 
 
 @app.route("/delete/<int:case_study_id>")
 @login_required
 def delete_case_study(case_study_id):
-    db.engine.dispose()
     with app.app_context():
-        case_study = CaseStudy.query.get(case_study_id)
+        case_study = fetch_case_study(case_study_id)
+        if not case_study:
+            return redirect(url_for("get_projects"))
         db.session.delete(case_study)
         db.session.commit()
     return redirect(url_for("get_projects"))
