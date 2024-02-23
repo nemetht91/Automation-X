@@ -120,7 +120,8 @@ def fetch_case_studies():
             case_studies = CaseStudy.query.order_by(desc(CaseStudy.id)).all()
         except sqlalchemy.exc.OperationalError as e:
             error_counter = error_counter + 1
-            logging.warning("Database Connection error: " + e)
+            logging.warning("Database Connection error: ")
+            logging.error(e)
             db.session.rollback()
             logging.warning("Attempting to reconnect")
             time.sleep(1)
@@ -138,7 +139,8 @@ def fetch_case_study(case_study_id):
             case_study = CaseStudy.query.get(case_study_id)
         except sqlalchemy.exc.OperationalError as e:
             error_counter = error_counter + 1
-            logging.warning("Database Connection error: " + e)
+            logging.warning("Database Connection error: ")
+            logging.error(e)
             db.session.rollback()
             logging.warning("Attempting to reconnect")
             time.sleep(1)

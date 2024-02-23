@@ -28,7 +28,8 @@ class MailtrapEmailSender:
             client.send(mail)
             return True
         except (mt.exceptions.MailtrapError, mt.exceptions.APIError, mt.exceptions.AuthorizationError) as e:
-            logging.error("Enquiry failed: " + e)
+            logging.error("Enquiry failed:")
+            logging.error(e)
             return False
 
     def __create_mail(self, sender_name: str, receiver_address: str, subject: str, message: str, category: str):
