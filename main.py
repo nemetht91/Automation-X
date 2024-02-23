@@ -267,7 +267,6 @@ def update_case_study(case_study, form):
 @login_required
 def create_case_study():
     if request.method == "POST":
-        db.engine.dispose()
         with app.app_context():
             case_study = create_new_case_study(request.form)
             db.session.add(case_study)
