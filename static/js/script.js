@@ -128,7 +128,7 @@ flipCards.forEach((flipCard) => {
 /* Case studies load more */
 const caseStudies = document.querySelectorAll('.projects .studies .study');
 const loadMore = document.querySelector('#case-study-load');
-const startingCaseStudies = 2;
+const startingCaseStudies = 10;
 
 window.addEventListener("load", event =>{
     if(window.location.href.match('projects.html') != null || window.location.href.match('projects') != null){
