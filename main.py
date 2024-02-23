@@ -149,7 +149,7 @@ def fetch_case_study(case_study_id):
 
 
 def is_keep_going(data, error_counter):
-    if data is None:
+    if data is not None:
         return False
     if error_counter > 1:
         return False
