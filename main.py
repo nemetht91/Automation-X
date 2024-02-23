@@ -149,12 +149,11 @@ def fetch_case_study(case_study_id):
 
 
 def is_keep_going(data, error_counter):
-    if data:
+    if data is None:
         return False
     if error_counter > 1:
         return False
     return True
-
 
 
 def sort_case_studies(case_studies: [CaseStudy]):
@@ -188,6 +187,8 @@ def sort_case_studies(case_studies: [CaseStudy]):
 @app.route('/projects')
 def get_projects():
     case_studies = fetch_case_studies()
+    if case_studies is None:
+        case_studies = []
     return render_template("projects.html", case_studies=case_studies)
 
 
