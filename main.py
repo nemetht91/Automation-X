@@ -328,15 +328,23 @@ def get_login():
 
 
 def login(username, password):
-    db.engine.dispose()
     with app.app_context():
-        user = User.query.filter_by(username=username).first()
+        user = get_user(username)
         if user is None:
             return False
         if check_password_hash(user.password, password):
             login_user(user)
             return True
         return False
+
+
+def get_user(username):
+    try:
+        return User.query.filter_by(username=username).first()
+    except sqlalchemy.exc.OperationalError as e:
+        logging.error("Database connection lost")
+        logging.error(e)
+        return None
 
 
 @app.route('/logout')
@@ -347,7 +355,12 @@ def logout():
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(user_id)
+    try:
+        return User.query.get(user_id)
+    except sqlalchemy.exc.OperationalError as e:
+        logging.error("Database connection lost")
+        logging.error(e)
+        return None
 
 
 @app.context_processor
