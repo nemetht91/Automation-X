@@ -1082,7 +1082,9 @@ footer .copyright{
 
 
     /* Showcase */
-    .showcase{
+    .showcase,
+    .services-intro .container
+    {
         height: 400px;
     }
 
