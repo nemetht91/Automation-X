@@ -68,10 +68,16 @@ a:hover{
 
 .navbar .container{
     height: 60px;
+    align-items: center;
 }
 
-.navbar img{
-    height: 40%;
+.logo-link{
+    height: 24px;
+}
+
+.logo-link img{
+  width: 200px;
+  object-fit: contain;
     z-index: 20;
 }
 
@@ -517,7 +523,7 @@ footer .copyright{
     background-image: linear-gradient(
         to bottom,
         rgb(44, 44, 44),
-        rgba(50, 50, 53, 0.055)
+        rgba(50, 50, 53, 0.4)
       ), url("../img/products.jpg");
     background-size: cover;
     background-position: right;
@@ -532,8 +538,8 @@ footer .copyright{
 
 
   .services-intro .intro-text{
-    color: var(--text-color);
-    mix-blend-mode: difference;
+    color: white;
+    
    
   }
 
