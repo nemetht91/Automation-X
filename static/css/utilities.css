@@ -96,6 +96,20 @@
     font-size: 1.5rem;
   }
 
+  .flip-card-front::after{
+    content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0px;
+      height: 0px;
+      border-top: 35px solid white;
+      border-right: 35px solid var(--light-color);
+      background-color: white;
+  }
+
+
+
 
   .flip-card-back {
     display: flex;
@@ -105,6 +119,18 @@
     justify-content: center;
     align-items: center;
     transform: rotateY(180deg);
+  }
+
+  .flip-card-back::after{
+    content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0px;
+      height: 0px;
+      border-top: 35px solid white;
+      border-left: 35px solid var(--light-color);
+      
   }
 
 
