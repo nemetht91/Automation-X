@@ -70,17 +70,32 @@ class User(UserMixin, db.Model):
 
 with app.app_context():
     #print('sqlalchemy engine:', db.engine)
-    db.create_all()
-    db.session.commit()
+    try:
+        db.create_all()
+        db.session.commit()
 
-    # close the sql pool connections so that new forks create their own connection.
-    db.session.remove()
-    db.engine.dispose()
+        # close the sql pool connections so that new forks create their own connection.
+        db.session.remove()
+        db.engine.dispose()
+    except sqlalchemy.exc.OperationalError as e:
+        logging.warning("Database Connection error: ")
+        logging.error(e)
+        db.session.rollback()
+
+
+def get_admin_user():
+    try:
+        admin = User.query.get(1)
+        return admin
+    except sqlalchemy.exc.OperationalError as e:
+        logging.warning("Database Connection error: ")
+        logging.error(e)
+        logging.warning("Failed to fetch admin user: ")
 
 
 def create_admin_user():
     with app.app_context():
-        admin = User.query.get(1)
+        admin = get_admin_user()
         if not admin:
             try:
                 admin = User(
@@ -92,6 +107,11 @@ def create_admin_user():
                 db.session.remove()
                 db.engine.dispose()
             except sqlalchemy.exc.IntegrityError:
+                return None
+            except sqlalchemy.exc.OperationalError as e:
+                logging.warning("Database Connection error: ")
+                logging.error(e)
+                logging.warning("Failed to create admin user: ")
                 return None
 
 
